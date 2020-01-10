@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation for Sites</title>
     <link rel="stylesheet" href="css/app.css">
-    <script src="https://kit.fontawesome.com/490a5cd13f.js" crossorigin="anonymous"></script>
   </head>
   <body class="height-100">
     
@@ -49,27 +48,19 @@
             
             <label>List Recipie by Region</label>
             <div class="input-group">
-              <select class="input-group-field">
-                <option value="husker">India</option>
-                <option value="starbuck">Azerbaijan</option>
-                <option value="hotdog">America</option>
-                <option value="apollo">Israel</option>
+              <select id="region" class="input-group-field">
               </select>
               <div class="input-group-button">
-                <button class="button"><i class="fas fa-search"></i></button>
+                <button id="regionBtn" class="button"><i class="fas fa-search"></i></button>
               </div>
             </div>
 
             <label>List Recipies by Category</label>
             <div class="input-group">
-              <select class="input-group-field">
-                <option value="husker">Seafood</option>
-                <option value="starbuck">Chicken</option>
-                <option value="hotdog">Something</option>
-                <option value="apollo">Something Else</option>
+              <select id="categories" class="input-group-field">
               </select>
               <div class="input-group-button">
-                <button class="button"><i class="fas fa-search"></i></button>
+                <button id="categoryBtn" class="button"><i class="fas fa-search"></i></button>
               </div>
             </div>
             
@@ -77,15 +68,8 @@
 
           <main class="cell medium-9 medium-cell-block-y main-body">
             <h5>Main Body</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ante ante, tristique ut venenatis sit amet, porta ut nulla. Fusce a tortor ligula. Quisque suscipit a arcu at bibendum. Donec lacinia justo in turpis vestibulum laoreet volutpat ut neque. Pellentesque in eleifend est, a malesuada urna. Vivamus rutrum erat quis est tristique, et lacinia est euismod. Nullam non ex tortor. Sed elementum ante et dolor sodales ultricies. Vivamus est nunc, finibus in pretium sed, aliquet quis leo. Nam massa turpis, condimentum in nisl sed, viverra vulputate neque. Sed malesuada nunc sed fringilla aliquet. Nullam venenatis massa tortor, nec tempus elit semper quis. Nullam scelerisque malesuada pulvinar. Pellentesque sagittis hendrerit nunc commodo accumsan. Ut pulvinar sit amet nulla nec vehicula. Curabitur nisi tortor, semper vel dolor sit amet, semper sagittis lectus.
-
-              Praesent a nisl sit amet magna eleifend rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum in porttitor nisi, at bibendum lorem. Vivamus nec aliquam libero, vel vestibulum metus. In vitae dictum magna, vitae imperdiet nunc. Ut a ligula vitae enim ultricies euismod sit amet vitae diam. Donec at urna et magna tempus sagittis. Pellentesque eu mi turpis. Etiam sit amet interdum lectus.
-              
-              Vivamus non augue augue. Morbi commodo turpis libero, ut convallis dui commodo quis. Ut ligula tellus, elementum ac nunc at, faucibus porta odio. Vivamus interdum ligula in tellus vestibulum maximus. Donec et consequat turpis. Duis aliquet purus a augue placerat vulputate. Quisque non dolor nec orci facilisis posuere. Nulla ultricies vehicula dolor, ut tincidunt est luctus hendrerit. Nunc tincidunt est odio. Nullam vitae arcu non purus fringilla tristique. Nulla tellus elit, laoreet sed consectetur ut, congue nec quam. Nulla eget ipsum nec nulla dictum laoreet sed at lectus. Quisque elit nulla, imperdiet id pretium at, dapibus id dolor. Sed ac mollis sem. Phasellus sit amet justo vitae erat pellentesque pretium. In id blandit orci, a semper eros.
-              
-              Etiam id tincidunt neque. Ut in arcu massa. Praesent at cursus lectus, non pretium enim. Curabitur diam felis, malesuada vel lacus id, mollis porta mauris. Aenean rutrum metus lacinia finibus pharetra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sollicitudin sit amet quam vel pharetra. Maecenas consectetur rutrum augue, a fringilla augue mattis vitae. Donec dignissim metus quis tristique consequat. Cras mollis, risus id congue lacinia, sem libero pretium lectus, et malesuada ipsum quam id sapien.
-              
-              Pellentesque at cursus mi. Praesent ut lobortis velit, ut aliquam risus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla et cursus risus. Sed ut nisl aliquet, faucibus urna vitae, euismod metus. Vivamus cursus magna leo, quis condimentum elit imperdiet nec. Nam aliquam nunc sit amet est sodales interdum.</p>
+            <div class="grid-x grid-padding-x" id="main-content">
+            </div>
           </main><!--End Main-->
 
         </div><!--End Main X-Container-->
@@ -98,12 +82,10 @@
     </div><!--End Container-->
 
 
-
-
-
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/what-input/dist/what-input.js"></script>
     <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
+    <script src="https://kit.fontawesome.com/490a5cd13f.js" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
