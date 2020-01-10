@@ -31,22 +31,19 @@ $("#regionBtn").on("click", function(event){
     event.preventDefault();
     $("#main-content").empty();
     let region = $("#region").val();
-    console.log(region);
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + region,
         type: "GET",
         success: function(response){
             $("#main-title").text(region + " Recipes");
             response.meals.forEach((item) => {
-                let meal = item.strMeal;
-                console.log(meal);
-                let container = $("<div>", {"class": "cell medium-4"});
-                let card = $("<div>", {"class": "radius bordered card"});
+                let container = $("<div>", {"class": "cell medium-6 large-3"});
+                let card = $("<div>", {"class": "radius bordered card recipie-card"});
                 let cardSection = $("<div>", {"class": "card-section"});
                 let id = item.idMeal;
                 let img = $("<img>", {"src": item.strMealThumb});
-                let p = $("<p>", {"id": id}).text(meal);
-                let button = $("<button>", {"class": "button getRecipe display-block", "id": id}).text("View Recipe");
+                let p = $("<p>", {"id": id}).text(item.strMeal);
+                let button = $("<button>", {"class": "button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
                 $("#main-content").append(container);
                 container.append(card);
                 card.append(img, cardSection);
@@ -61,22 +58,19 @@ $("#categoryBtn").on("click", function(event){
     event.preventDefault();
     $("#main-content").empty();
     let category = $("#categories").val();
-    console.log(category);
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category,
         type: "GET",
         success: function(response){
             $("#main-title").text(category + " Recipes");
             response.meals.forEach((item) => {
-                let meal = item.strMeal;
-                console.log(meal);
-                let container = $("<div>", {"class": "cell medium-4"});
-                let card = $("<div>", {"class": "radius bordered card"});
+                let container = $("<div>", {"class": "cell medium-6 large-3"});
+                let card = $("<div>", {"class": "radius bordered card recipie-card"});
                 let cardSection = $("<div>", {"class": "card-section"});
                 let id = item.idMeal;
                 let img = $("<img>", {"src": item.strMealThumb});
-                let p = $("<p>", {"id": id}).text(meal);
-                let button = $("<button>", {"class": "button getRecipe display-block", "id": id}).text("View Recipe");
+                let p = $("<p>", {"id": id}).text(item.strMeal);
+                let button = $("<button>", {"class": "button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
                 $("#main-content").append(container);
                 container.append(card);
                 card.append(img, cardSection);
