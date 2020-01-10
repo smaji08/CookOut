@@ -36,6 +36,7 @@ $("#regionBtn").on("click", function(event){
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + region,
         type: "GET",
         success: function(response){
+            $("#main-title").text(region + " Recipes");
             response.meals.forEach((item) => {
                 let meal = item.strMeal;
                 console.log(meal);
@@ -65,6 +66,7 @@ $("#categoryBtn").on("click", function(event){
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category,
         type: "GET",
         success: function(response){
+            $("#main-title").text(category + " Recipes");
             response.meals.forEach((item) => {
                 let meal = item.strMeal;
                 console.log(meal);
