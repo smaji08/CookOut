@@ -1,0 +1,35 @@
+html, body {
+    -webkit-tap-highlight-color: rgba(0,0,0,0.87);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: IBM Plex Sans;
+}
+
+$hero-height: 100vh;
+
+.hero-section {
+  background: url('../img/brooke-lark-4J059aGa5s4-unsplash.jpg') 100% no-repeat;
+  background-size: cover;
+  height: $hero-height;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .hero-section-text {
+    color: $white;
+    text-shadow: 1px 1px 2px $black;
+  }
+
+  .home-hero-text {
+    color: #f1f3f5;
+    font-family: Vollkorn;
+  }
+
+  .getRecipe {
+    font-size: 120%;
+    font-weight: bold;
+  }
+}
+
