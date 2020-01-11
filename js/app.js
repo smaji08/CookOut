@@ -37,23 +37,26 @@ $("#regionBtn").on("click", function(event){
         success: function(response){
             $("#main-title").text(region + " Recipes");
             response.meals.forEach((item) => {
-                let container = $("<div>", {"class": "cell medium-6 large-3"});
+                let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
                 let card = $("<div>", {"class": "radius bordered card recipie-card"});
                 let cardSection = $("<div>", {"class": "card-section"});
                 let id = item.idMeal;
                 let img = $("<img>", {"src": item.strMealThumb});
-                let p = $("<p>", {"id": id}).text(item.strMeal);
-                let button = $("<button>", {"class": "button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
+                let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
+                let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
+                let button = $("<button>", {"class": "cell auto button alert rounded getRecipe display-block", "id": id}).text("View Recipe");
+                let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
                 $("#main-content").append(container);
                 container.append(card);
-                card.append(img, cardSection);
-                cardSection.append(p, button);
+                card.append(img, divider, cardSection);
+                cardSection.append(btnContainer);
+                btnContainer.append(button, bookmark);
             })
         }
     });
 });
 
-//Populate Regional Recipes
+//Populate Category Recipes
 $("#categoryBtn").on("click", function(event){
     event.preventDefault();
     $("#main-content").empty();
@@ -64,17 +67,20 @@ $("#categoryBtn").on("click", function(event){
         success: function(response){
             $("#main-title").text(category + " Recipes");
             response.meals.forEach((item) => {
-                let container = $("<div>", {"class": "cell medium-6 large-3"});
+                let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
                 let card = $("<div>", {"class": "radius bordered card recipie-card"});
                 let cardSection = $("<div>", {"class": "card-section"});
                 let id = item.idMeal;
                 let img = $("<img>", {"src": item.strMealThumb});
-                let p = $("<p>", {"id": id}).text(item.strMeal);
-                let button = $("<button>", {"class": "button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
+                let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
+                let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
+                let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
+                let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
                 $("#main-content").append(container);
                 container.append(card);
-                card.append(img, cardSection);
-                cardSection.append(p, button);
+                card.append(img, divider, cardSection);
+                cardSection.append(btnContainer);
+                btnContainer.append(button, bookmark);
             })
         }
     });

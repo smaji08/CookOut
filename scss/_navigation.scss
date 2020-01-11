@@ -1,4 +1,19 @@
-.custom-nav {
-    padding:0.5rem 0;
-    background-color: #f2f3f3;
+
+#menu-title{
+    font-family: Vollkorn;
+    font-weight: 600;
+    font-size: 24px;
+    color:#fdce4b;
+}
+
+#main-nav {
+    border-bottom: 3px solid #55bdca;
+}
+
+#main-nav, #main-nav button{
+    color:#fff;
+}
+
+#main-nav ul li a{
+    color:#f1f3f5;
 }
