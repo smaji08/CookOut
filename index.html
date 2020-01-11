@@ -1,87 +1,99 @@
 <!doctype html>
 
-<html class="no-js" lang="en">
+<html class="no-js height-100" lang="en"><!--height 100 to push footer to bottom-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    <title>CookOut</title>
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
+  <body class="height-100"><!--height 100 to push footer to bottom-->
     
-    <div class="grid-y medium-grid-frame">
-
-      <nav class="cell shrink header medium-cell-block-container custom-nav">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Site Title</li>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a>
-            <ul class="menu">
-              <li><a href="#">Three A</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav> <!--End Navigation-->
+    <div class="grid-y medium-grid-frame height-100"><!--Site child elements move in the y-direciton pins to the height of the viewport-->
+      
+      <div class="title-bar" data-responsive-toggle="main-nav" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle="main-nav"></button>
+        <div class="title-bar-title">Menu</div>
+      </div><!--Title Bar-->
+      
+      <div class="top-bar" id="main-nav">
+        <div class="top-bar-left">
+          <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
+            <li class="menu-text">CookOut</li>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><button id="call-to-action" type="button" class="button">Recipe Box</button></li>
+          </ul>
+        </div>
+      </div><!--Menu-->
       
       <div class="cell medium-auto medium-cell-block-container">
-        <div class="grid-x grid-padding-x">
+        <div class="grid-x grid-padding-x height-100"><!--Child elements move in the x-direction-->
           
-          <aside class="cell medium-3 medium-cell-block-y search-area">
-            <h5>Recipie Search</h5>
-            
-            <label>List Ingredients</label>
-            <div class="input-group">
-              <input type="text" class="input-group-field" placeholder="List All Ingredients">
-              <div class="input-group-button">
-                <button class="button"><i class="fas fa-search"></i></button>
-              </div>
-            </div>
+          <aside class="cell medium-4 large-3 search-area">
 
-            <label>Meal Name</label>
-            <div class="input-group">
-              <input type="text" class="input-group-field" placeholder="Search By Meal Name">
-              <div class="input-group-button">
-                <button class="button"><i class="fas fa-search"></i></button>
-              </div>
-            </div>
+                <h5>Recipie Search</h5>
             
-            <label>List Recipie by Region</label>
-            <div class="input-group">
-              <select id="region" class="input-group-field">
-              </select>
-              <div class="input-group-button">
-                <button id="regionBtn" class="button"><i class="fas fa-search"></i></button>
-              </div>
-            </div>
+                <label>List Ingredients</label>
+                <div class="input-group">
+                  <input type="text" class="input-group-field" placeholder="List All Ingredients">
+                  <div class="input-group-button">
+                    <button class="button"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
 
-            <label>List Recipies by Category</label>
-            <div class="input-group">
-              <select id="categories" class="input-group-field">
-              </select>
-              <div class="input-group-button">
-                <button id="categoryBtn" class="button"><i class="fas fa-search"></i></button>
-              </div>
-            </div>
+                <label>Meal Name</label>
+                <div class="input-group">
+                  <input type="text" class="input-group-field" placeholder="Search By Meal Name">
+                  <div class="input-group-button">
+                    <button class="button"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
+                
+                <label>List Recipie by Region</label>
+                <div class="input-group">
+                  <select id="region" class="input-group-field">
+                  </select>
+                  <div class="input-group-button">
+                    <button id="regionBtn" class="button"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
+
+                <label>List Recipies by Category</label>
+                <div class="input-group">
+                  <select id="categories" class="input-group-field">
+                  </select>
+                  <div class="input-group-button">
+                    <button id="categoryBtn" class="button"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
+            
             
           </aside><!--End Aside-->
 
-          <main class="cell medium-9 medium-cell-block-y main-body">
+          <main class="cell medium-cell-block-y medium-8 large-9 main-body"><!--content scrolls in the y-direction-->
             <h5 id="main-title">Main Body</h5>
-            <div class="grid-x grid-padding-x" id="main-content">
-            </div>
+            <div class="grid-x grid-padding-x" id="main-content"></div><!--Main Content moves in the x-direction-->
           </main><!--End Main-->
 
         </div><!--End Main X-Container-->
-      </div><!--End Main Y-Container-->
+      </div><!--End Main Content Container-->
 
-      <footer class="cell">
-        <h5>Here is my footer</h5>
+      <footer id="footer" class="cell">
+        <div class="grix-x grid-padding-x footer">
+          <div class="cell">
+            <h6>Here is my footer</h6>
+          </div>
+        </div>
       </footer><!--End Footer-->
 
-    </div><!--End Container-->
-
+    </div><!--End Y-Container-->
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/what-input/dist/what-input.js"></script>
