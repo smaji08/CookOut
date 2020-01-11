@@ -65,24 +65,24 @@
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
+$global-font-size: 75%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  primary: #193c62,
+  secondary: #f1f3f5,
+  success: #41B3A3,
+  warning: #fdce4b,
+  alert: #f07c41,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$black: #212121;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: IBM Plex Sans, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -108,9 +108,9 @@ $print-hrefs: true;
 $breakpoints: (
   small: 0,
   medium: 640px,
-  large: 1024px,
+  large: 1078px,
   xlarge: 1200px,
-  xxlarge: 1400px,
+  xxlarge: 1429px,
 );
 $breakpoints-hidpi: (
   hidpi-1: 1,
@@ -141,7 +141,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace: IBM Plex Sans, Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
@@ -872,7 +872,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
+$topbar-background: $primary-color;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;

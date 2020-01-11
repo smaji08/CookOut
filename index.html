@@ -20,15 +20,15 @@
       <div class="top-bar" id="main-nav">
         <div class="top-bar-left">
           <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
-            <li class="menu-text"><i class="fas fa-utensils"></i> CookOut</li>
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
+            <li id="menu-title" class="menu-text"><i class="fas fa-utensils"></i>CookOut</li>
+            <li class="align-self-middle"><a href="#">One</a></li>
+            <li class="align-self-middle"><a href="#">Two</a></li>
+            <li class="align-self-middle"><a href="#">Three</a></li>
           </ul>
         </div>
         <div class="top-bar-right">
           <ul class="menu">
-            <li><button id="call-to-action" type="button" class="button">Recipe Box <i class="fas fa-bookmark"></i></button></li>
+            <li><button id="call-to-action" type="button" class="button warning">Recipe Box <i class="fas fa-bookmark"></i></button></li>
           </ul>
         </div>
       </div><!--Menu-->
@@ -39,20 +39,17 @@
           <aside class="cell medium-4 large-3 search-area">
 
                 <h5>Recipie Search</h5>
-            
-                <label>List Ingredients</label>
                 <div class="input-group">
                   <input type="text" class="input-group-field" placeholder="List All Ingredients">
                   <div class="input-group-button">
-                    <button class="button"><i class="fas fa-search"></i></button>
+                    <button class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
-                <label>Meal Name</label>
                 <div class="input-group">
                   <input type="text" class="input-group-field" placeholder="Search By Meal Name">
                   <div class="input-group-button">
-                    <button class="button"><i class="fas fa-search"></i></button>
+                    <button class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
                 
@@ -61,7 +58,7 @@
                   <select id="region" class="input-group-field">
                   </select>
                   <div class="input-group-button">
-                    <button id="regionBtn" class="button"><i class="fas fa-search"></i></button>
+                    <button id="regionBtn" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
@@ -70,7 +67,7 @@
                   <select id="categories" class="input-group-field">
                   </select>
                   <div class="input-group-button">
-                    <button id="categoryBtn" class="button"><i class="fas fa-search"></i></button>
+                    <button id="categoryBtn" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
             
@@ -78,8 +75,17 @@
           </aside><!--End Aside-->
 
           <main class="cell medium-cell-block-y medium-8 large-9 main-body"><!--content scrolls in the y-direction-->
-            <h5 id="main-title">Main Body</h5>
-            <div class="grid-x grid-padding-x" id="main-content"></div><!--Main Content moves in the x-direction-->
+            <div id="main-title" ></div>
+            <div class="grid-x grid-padding-x " id="main-content">
+              <div class="hero-section">
+                <div class="hero-section-text">
+                  <div class="grid-x">
+                  <button class="cell auto button primay getRecipe display-block" id="52874">View Recipe</button> 
+                  <button class="cell auto button warning getRecipe display-block" id="52874">View Recipe</button>
+                </div>
+                </div>
+              </div>
+            </div><!--Main Content moves in the x-direction-->
           </main><!--End Main-->
 
         </div><!--End Main X-Container-->

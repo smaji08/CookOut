@@ -44,7 +44,7 @@ $("#regionBtn").on("click", function(event){
                 let img = $("<img>", {"src": item.strMealThumb});
                 let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
                 let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
-                let button = $("<button>", {"class": "cell auto button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
+                let button = $("<button>", {"class": "cell auto button alert rounded getRecipe display-block", "id": id}).text("View Recipe");
                 let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
                 $("#main-content").append(container);
                 container.append(card);
@@ -74,7 +74,7 @@ $("#categoryBtn").on("click", function(event){
                 let img = $("<img>", {"src": item.strMealThumb});
                 let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
                 let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
-                let button = $("<button>", {"class": "cell auto button hollow rounded getRecipe display-block", "id": id}).text("View Recipe");
+                let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
                 let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
                 $("#main-content").append(container);
                 container.append(card);
