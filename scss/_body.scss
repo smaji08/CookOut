@@ -3,6 +3,10 @@
     padding-top:0.5rem;
 }
 
+#main-title {
+    font-size: 1.666666rem;
+}
+
 .getRecipe {
     margin-bottom: 0!important;
     margin-left:0.5rem!important;
@@ -10,7 +14,19 @@
     color:#fff!important;
 }
 
+.recipeBoxImg:hover{
+    opacity: 0.9;
+    cursor: zoom-in;
+}
+
 .recipe-bookmark{
     cursor: pointer;
+    color: #41B3A3;
 }
+
+.card-mealname{
+    font-size: 1.3!important;
+    font-weight: bold!important;
+}
+
 

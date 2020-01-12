@@ -28,15 +28,15 @@ $.ajax({
 
 //Create Recipe Card Function
 function createRecipeCards(response, searchTerm){
-    
+    $("#main-content").empty();
     $("#main-title").text(searchTerm + " Recipes");
     response.meals.forEach((item) => {
         let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
         let card = $("<div>", {"class": "radius bordered card recipie-card"});
         let cardSection = $("<div>", {"class": "card-section"});
         let id = item.idMeal;
-        let img = $("<img>", {"src": item.strMealThumb});
-        let divider = $("<div>", {"class": "card-divider"}).text(item.strMeal);
+        let img = $("<img>", {"src": item.strMealThumb, "alt": item.strMeal, "class": "recipeBoxImg", "data-open": "imgModal"});
+        let divider = $("<div>", {"class": "card-divider card-mealname"}).text(item.strMeal);
         let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
         let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
         let bookmark = $("<i>", {"id": id, 
@@ -54,7 +54,6 @@ function createRecipeCards(response, searchTerm){
 //Populate Regional Recipes
 $("#regionBtn").on("click", function(event){
     event.preventDefault();
-    $("#main-content").empty();
     let region = $("#region").val();
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + region,
@@ -70,11 +69,7 @@ $("#regionBtn").on("click", function(event){
 
 //Populate Category Recipes
 $("#categoryBtn").on("click", function(event){
-    
     queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
-
-    event.preventDefault();
-    $("#main-content").empty();
     let category = $("#categories").val();
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category,
@@ -88,6 +83,26 @@ $("#categoryBtn").on("click", function(event){
     });
 });
 
+$("#heroSearch").on("click", function(e){
+    e.preventDefault();
+    randomCategory();
+});
+
+//Random Category
+function randomCategory(){
+    let cats = ["Beef", "Chicken", "Dessert", "Lamb", "Pasta", "Pork", "Seafood", "Side", "Starter", "Vegan", "Vegetarian", "Breakfast"]
+    let randomCat = cats[Math.floor(Math.random()*cats.length)];
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + randomCat,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, randomCat);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipies Found");
+        }
+    });
+}
 
 // $.ajax(
 //     {
