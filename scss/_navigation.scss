@@ -1,3 +1,5 @@
+$yellow: #fdce4b;
+$blue: #193c62;
 
 #menu-title{
     font-family: Vollkorn;
@@ -17,3 +19,24 @@
 #main-nav ul li a{
     color:#f1f3f5;
 }
+
+.title-bar-custom {
+    color:#fdce4b;
+}
+
+.inIn{
+    @include top-bar-container;
+};
+
+.outOut, .outOut ul{
+    background-color: $yellow!important;
+}
+
+
+    
+#menu-title.outOut{
+    color: $blue;
+}
+#menu-title.inIn{
+    color: $yellow;
+    }

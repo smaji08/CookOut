@@ -5,6 +5,10 @@ html, body {
     font-family: IBM Plex Sans;
 }
 
+input, select {
+  font-size: 90%!important;
+}
+
 $hero-height: 100vh;
 
 .hero-section {

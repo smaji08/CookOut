@@ -1,0 +1,26 @@
+.storageTable{
+    margin:0.5rem 1rem 0.5rem 1rem ;
+
+    .table-center {
+        text-align: center;
+    }
+
+    .recipeBoxImg {
+        width: 20%;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    .showRecipe {
+        font-size: 2rem;
+    }
+
+    .trash{
+        color:#f07c41;
+    }
+
+    .trash, .view{
+        cursor: pointer;
+    }
+
+}
