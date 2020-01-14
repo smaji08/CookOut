@@ -4,7 +4,7 @@ const apiKeyBing = "AvYeMBHRRinl7EAEc0aP_W8fojB2lfYzFE19POYyR9ZF4evq9P3b6A16FV1X
 
 $("#heroineSearch").on("click", function(event){
     event.preventDefault();
-    findme();
+    findMe();
     
 });
 
@@ -49,7 +49,7 @@ function GeocodeCallback(response) {
     // console.log(response);
     lat = response.resourceSets[0].resources[0].point.coordinates[0];
     lon = response.resourceSets[0].resources[0].point.coordinates[1];
-    iamhere(lat,lon);
+    iAmHere(lat,lon);
 
 }
 
@@ -57,18 +57,18 @@ $("#regionRestauBtn").on("click", function(event){
     event.preventDefault();
     cuisineId = $("#regionRestau").val();
     $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
-    getpopularrestaurants(localityId,localityType,cuisineId);
+    getPopularRestaurants(localityId,localityType,cuisineId);
     
 });
 
-function findme(){
+function findMe(){
     $.getJSON('https://geolocation-db.com/json/')
         .done (function(location) {
-            iamhere(location.latitude,location.longitude);   
+            iAmHere(location.latitude,location.longitude);   
         });
 }
 
-function iamhere(lat,lon){
+function iAmHere(lat,lon){
 
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + lon,
@@ -85,7 +85,7 @@ function iamhere(lat,lon){
             var topCuisine = response.popularity.top_cuisines;
             randTopCuisine = topCuisine[Math.floor(Math.random()*topCuisine.length)];
             $("#searchByCityRestau").attr("placeholder", cityName);
-            getcuisine(cityId,randTopCuisine);
+            getCuisine(cityId,randTopCuisine);
         },
         error: function(xhr){
             alert(xhr.response + " Error: No Category Found");
@@ -94,7 +94,7 @@ function iamhere(lat,lon){
 
 }
 
-function getcuisine(cityId,randTopCuisine){
+function getCuisine(cityId,randTopCuisine){
     
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/cuisines?city_id=" + cityId,
@@ -109,7 +109,7 @@ function getcuisine(cityId,randTopCuisine){
                 $("#regionRestau").append(option);
                 if(cuisineName === randTopCuisine){
                     $('#regionRestau option:contains(' + cuisineName + ')').prop({selected: true});
-                    getpopularrestaurants(localityId,localityType,cuisineId);
+                    getPopularRestaurants(localityId,localityType,cuisineId);
                 }
             });
         },
@@ -119,7 +119,7 @@ function getcuisine(cityId,randTopCuisine){
     });
 }
 
-function getpopularrestaurants(localityId,localityType,cuisineId){
+function getPopularRestaurants(localityId,localityType,cuisineId){
     
     $.ajax(
         {
@@ -128,7 +128,7 @@ function getpopularrestaurants(localityId,localityType,cuisineId){
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
         success: function(response) {
-            createrestaurantcards(response);
+            createRestaurantCards(response);
         },
         error: function(xhr){
             alert(xhr.response + " Error: No Category Found");
@@ -136,7 +136,7 @@ function getpopularrestaurants(localityId,localityType,cuisineId){
     });
 }
 
-function createrestaurantcards(response){
+function createRestaurantCards(response){
     if (response.restaurants.length > 0){
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");

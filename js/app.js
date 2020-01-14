@@ -51,6 +51,38 @@ function createRecipeCards(response, searchTerm){
     });
 }
 
+//Recipes by Meal Name Search
+$("#btnRecipeByMealName").on("click", function(event){
+    event.preventDefault();
+    let mealName = $("#recipeByMealName").val().trim();
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + mealName,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, mealName);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipes Found");
+        }
+    });
+});
+
+//Recipes by multi Ingredients search
+$("#btnRecipeByIngredients").on("click", function(event){
+    event.preventDefault();
+    let mainIngredients = $("#recipeByIngredients").val().trim();
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + mainIngredients,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, mainIngredients);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipes Found");
+        }
+    });
+});
+
 //Populate Regional Recipes
 $("#regionBtn").on("click", function(event){
     event.preventDefault();
