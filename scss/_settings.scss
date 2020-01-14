@@ -65,7 +65,7 @@
 // 1. Global
 // ---------
 
-$global-font-size: 75%;
+$global-font-size: 80%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
@@ -78,7 +78,7 @@ $foundation-palette: (
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #212121;
+$black: #292f38;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
@@ -845,7 +845,7 @@ $thumbnail-radius: $global-radius;
 // 53. Title Bar
 // -------------
 
-$titlebar-background: $black;
+$titlebar-background: $primary-color;
 $titlebar-color: $white;
 $titlebar-padding: 0.5rem;
 $titlebar-text-font-weight: bold;

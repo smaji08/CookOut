@@ -26,93 +26,112 @@ $.ajax({
     }
 })
 
+//Create Recipe Card Function
+function createRecipeCards(response, searchTerm){
+    $("#main-content").empty();
+    $("#main-title").text(searchTerm + " Recipes");
+    response.meals.forEach((item) => {
+        let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
+        let card = $("<div>", {"class": "radius bordered card e-card"});
+        let cardSection = $("<div>", {"class": "card-section"});
+        let id = item.idMeal;
+        let img = $("<img>", {"src": item.strMealThumb, "alt": item.strMeal, "class": "recipeBoxImg", "data-open": "imgModal"});
+        let divider = $("<div>", {"class": "card-divider card-mealname"}).text(item.strMeal);
+        let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
+        let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
+        let bookmark = $("<i>", {"id": id, 
+                                "class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right",
+                                "data-imgURL": item.strMealThumb,
+                                "data-mealName": item.strMeal});
+        $("#main-content").append(container);
+        container.append(card);
+        card.append(img, divider, cardSection);
+        cardSection.append(btnContainer);
+        btnContainer.append(button, bookmark);
+    });
+}
+
+//Recipes by Meal Name Search
+$("#btnRecipeByMealName").on("click", function(event){
+    event.preventDefault();
+    let mealName = $("#recipeByMealName").val().trim();
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + mealName,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, mealName);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipes Found");
+        }
+    });
+});
+
+//Recipes by multi Ingredients search
+$("#btnRecipeByIngredients").on("click", function(event){
+    event.preventDefault();
+    let mainIngredients = $("#recipeByIngredients").val().trim();
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + mainIngredients,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, mainIngredients);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipes Found");
+        }
+    });
+});
+
 //Populate Regional Recipes
 $("#regionBtn").on("click", function(event){
     event.preventDefault();
-    $("#main-content").empty();
     let region = $("#region").val();
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + region,
         type: "GET",
         success: function(response){
-            $("#main-title").text(region + " Recipes");
-            response.meals.forEach((item) => {
-                let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
-                let card = $("<div>", {"class": "radius bordered card recipie-card"});
-                let cardSection = $("<div>", {"class": "card-section"});
-                let id = item.idMeal;
-                let img = $("<img>", {"src": item.strMealThumb});
-                let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
-                let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
-                let button = $("<button>", {"class": "cell auto button alert rounded getRecipe display-block", "id": id}).text("View Recipe");
-                let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
-                $("#main-content").append(container);
-                container.append(card);
-                card.append(img, divider, cardSection);
-                cardSection.append(btnContainer);
-                btnContainer.append(button, bookmark);
-            })
+            createRecipeCards(response, region);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No Recipes Found");
         }
     });
 });
 
 //Populate Category Recipes
 $("#categoryBtn").on("click", function(event){
-    event.preventDefault();
-    $("#main-content").empty();
+    queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
     let category = $("#categories").val();
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + category,
         type: "GET",
         success: function(response){
-            $("#main-title").text(category + " Recipes");
-            response.meals.forEach((item) => {
-                let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
-                let card = $("<div>", {"class": "radius bordered card recipie-card"});
-                let cardSection = $("<div>", {"class": "card-section"});
-                let id = item.idMeal;
-                let img = $("<img>", {"src": item.strMealThumb});
-                let divider = $("<div>", {"id": id, "class": "card-divider"}).text(item.strMeal);
-                let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
-                let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
-                let bookmark = $("<i>", {"class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right"});
-                $("#main-content").append(container);
-                container.append(card);
-                card.append(img, divider, cardSection);
-                cardSection.append(btnContainer);
-                btnContainer.append(button, bookmark);
-            })
+            createRecipeCards(response, category);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No es Found");
         }
     });
 });
 
-
-$.ajax(
-    {
-    url: "https://developers.zomato.com/api/v2.1/categories",
-    type: "GET",
-    beforeSend: function(xhr){xhr.setRequestHeader("user-key", "0bd2dd813596b1757098bae0d1525796");},
-    success: function(response) {
-        console.log(response);
-     }
- });
-
-var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=Teriyaki%20Chicken%20Casserole";
-$.ajax({
-        url: queryURL,
-        method: "GET"
-        })
-    .then(function(response){
-    console.log(response);
-    for (i=1;i<21;i++){
-        var x = i.toString();
-        var strIngredient = "strIngredient" + i;
-        
-        // console.log(strIngredient);
-        var whatever = response.meals[0][strIngredient];
-        // console.log( whatever);
-        if (whatever !== ""  && whatever != null){
-            console.log(whatever);
-        }
-    }
+$("#heroSearch").on("click", function(e){
+    e.preventDefault();
+    randomCategory();
 });
+
+//Random Category
+function randomCategory(){
+    let cats = ["Beef", "Chicken", "Dessert", "Lamb", "Pasta", "Pork", "Seafood", "Side", "Starter", "Vegan", "Vegetarian", "Breakfast"]
+    let randomCat = cats[Math.floor(Math.random()*cats.length)];
+    $.ajax({
+        url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + randomCat,
+        type: "GET",
+        success: function(response){
+            createRecipeCards(response, randomCat);
+        },
+        error: function(xhr){
+            alert(xhr.response + " Error: No es Found");
+        }
+    });
+}
