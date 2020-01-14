@@ -40,7 +40,7 @@
               <!--Cooking Search-->
               <div id="cookSearchPane">
 
-                <h5 id="searchTitle">Recipie Search</h5>
+                <h5 id="searchTitle">Recipe Search</h5>
                 <div class="input-group">
                   <input type="text" class="input-group-field" placeholder="List All Ingredients">
                   <div class="input-group-button">
@@ -55,7 +55,7 @@
                   </div>
                 </div>
                 
-                <label>List Recipie by Region</label>
+                <label>List Recipe by Region</label>
                 <div class="input-group">
                   <select id="region" class="input-group-field">
                   </select>
@@ -64,7 +64,7 @@
                   </div>
                 </div>
 
-                <label>List Recipies by Category</label>
+                <label>List Recipes by Category</label>
                 <div class="input-group">
                   <select id="categories" class="input-group-field">
                   </select>
@@ -79,25 +79,25 @@
 
                 <h5 id="searchTitle">Restaurant Search</h5>
                 <div class="input-group">
-                  <input type="text" class="input-group-field" placeholder="Enter City">
+                  <input type="text" id="searchByCityRestau" class="input-group-field" placeholder="Enter City (ex: NYC or NYC,NY)">
                   <div class="input-group-button">
-                    <button class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="btnByCityRestau" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
                 <div class="input-group">
-                  <input type="text" class="input-group-field" placeholder="Search Zip">
+                  <input type="text" id="searchCityByZipRestau" class="input-group-field" placeholder="Search Zip">
                   <div class="input-group-button">
-                    <button class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="btnByZipRestau" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
                 
-                <label>Search Restaurants by Category</label>
+               <label>Search Restaurants by Region/Cuisine</label>
                 <div class="input-group">
-                  <select id="region" class="input-group-field">
+                  <select id="regionRestau" class="input-group-field">
                   </select>
                   <div class="input-group-button">
-                    <button id="regionBtn" class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="regionRestauBtn" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
@@ -114,7 +114,7 @@
                     <h5 class="home-hero-text">Food Brings Friends and Family Together</h5>
                   <div class="grid-x">
                   <button class="cell auto button rounded primay getRecipe display-block" id="heroSearch">Search Recipe</button> 
-                  <button class="cell auto button rounded warning getRecipe display-block" id="52874">Search Restaurants</button>
+                  <button class="cell auto button rounded warning getRecipe display-block" id="heroineSearch">Search Restaurants</button>
                   </div>
                 </div>
               </div>
@@ -148,10 +148,11 @@
     <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
     <script src="https://kit.fontawesome.com/490a5cd13f.js" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
-    <script src="js/recipenameanddata2.js"></script>
-    <script src="js/recipenameanddata.js"></script>
-    <script src="rnmcookout.js"></script>
+    <!-- <script src="js/recipenameanddata2.js"></script>
+    <script src="js/recipenameanddata.js"></script> -->
+    <!-- <script src="rnmcookout.js"></script> -->
     <script src="js/app-switcher.js"></script>
     <script src="js/local-storage.js"></script>
+    <script src="js/restaurant.js"></script>
   </body>
 </html>

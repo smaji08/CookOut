@@ -32,7 +32,7 @@ function createRecipeCards(response, searchTerm){
     $("#main-title").text(searchTerm + " Recipes");
     response.meals.forEach((item) => {
         let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
-        let card = $("<div>", {"class": "radius bordered card recipie-card"});
+        let card = $("<div>", {"class": "radius bordered card e-card"});
         let cardSection = $("<div>", {"class": "card-section"});
         let id = item.idMeal;
         let img = $("<img>", {"src": item.strMealThumb, "alt": item.strMeal, "class": "recipeBoxImg", "data-open": "imgModal"});
@@ -62,7 +62,7 @@ $("#regionBtn").on("click", function(event){
             createRecipeCards(response, region);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No Recipies Found");
+            alert(xhr.response + " Error: No Recipes Found");
         }
     });
 });
@@ -78,7 +78,7 @@ $("#categoryBtn").on("click", function(event){
             createRecipeCards(response, category);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No Recipies Found");
+            alert(xhr.response + " Error: No es Found");
         }
     });
 });
@@ -99,37 +99,7 @@ function randomCategory(){
             createRecipeCards(response, randomCat);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No Recipies Found");
+            alert(xhr.response + " Error: No es Found");
         }
     });
 }
-
-// $.ajax(
-//     {
-//     url: "https://developers.zomato.com/api/v2.1/categories",
-//     type: "GET",
-//     beforeSend: function(xhr){xhr.setRequestHeader("user-key", "0bd2dd813596b1757098bae0d1525796");},
-//     success: function(response) {
-//         console.log(response);
-//      }
-//  });
-
-// var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=Teriyaki%20Chicken%20Casserole";
-// $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//         })
-//     .then(function(response){
-//     console.log(response);
-//     for (i=1;i<21;i++){
-//         var x = i.toString();
-//         var strIngredient = "strIngredient" + i;
-        
-//         // console.log(strIngredient);
-//         var whatever = response.meals[0][strIngredient];
-//         // console.log( whatever);
-//         if (whatever !== ""  && whatever != null){
-//             console.log(whatever);
-//         }
-//     }
-// });
