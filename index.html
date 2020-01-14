@@ -41,17 +41,19 @@
               <div id="cookSearchPane">
 
                 <h5 id="searchTitle">Recipe Search</h5>
+                <label>List Recipe by Ingredients</label>
                 <div class="input-group">
-                  <input type="text" class="input-group-field" placeholder="List All Ingredients">
+                  <input type="text" id="recipeByIngredients" class="input-group-field" placeholder="List All Ingredients">
                   <div class="input-group-button">
-                    <button class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="btnRecipeByIngredients"class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
+                <label>List Recipe by Meal Name</label>
                 <div class="input-group">
-                  <input type="text" class="input-group-field" placeholder="Search By Meal Name">
+                  <input type="text" id="recipeByMealName" class="input-group-field" placeholder="Search By Meal Name">
                   <div class="input-group-button">
-                    <button class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="btnRecipeByMealName" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
                 
@@ -73,18 +75,22 @@
                   </div>
                 </div>
               </div>
-              
+
+                           
               <!--Restaurant Search-->
               <div id="outSearchPane" style="display: none;">
-
+                
                 <h5 id="searchTitle">Restaurant Search</h5>
+
+                <label>Search Restaurants by City/City,State</label>
                 <div class="input-group">
                   <input type="text" id="searchByCityRestau" class="input-group-field" placeholder="Enter City (ex: NYC or NYC,NY)">
                   <div class="input-group-button">
                     <button id="btnByCityRestau" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
-
+                
+                <label>Search Restaurants by ZIP Code</label>
                 <div class="input-group">
                   <input type="text" id="searchCityByZipRestau" class="input-group-field" placeholder="Search Zip">
                   <div class="input-group-button">
