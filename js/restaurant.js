@@ -24,6 +24,7 @@ $("#searchByCityRestau").focusin(function(){
 });
 
 $("#searchCityByZipRestau").focusin(function(){
+
     $("#searchByCityRestau").attr("placeholder","Enter City (ex: NYC or NYC,NY)");
     $("#searchByCityRestau").val("");
 });
