@@ -16,7 +16,6 @@ function inInOut(){
     $("#menu-title").removeClass("outOut").addClass("inIn");
     $("#call-to-action").removeClass("primary").addClass("warning");
     $("#call-to-action-rest").removeClass("warning").addClass("primary");
-
 }
 
 $("#outSearch").on("click", function(e){
