@@ -140,24 +140,32 @@ function createRestaurantCards(response){
     if (response.restaurants.length > 0){
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
-
+        console.log(response);
         response.restaurants.forEach((item) => {
             let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
             let card = $("<div>", {"class": "radius bordered card e-card"});
             let cardSection = $("<div>", {"class": "card-section"});
             let id = item.restaurant.R.res_id;
-            let img = $("<img>", {"src": item.restaurant.thumb, "alt": item.restaurant.featured_image,
-                                "class": "recipeBoxImg", "data-open": "imgModal"});
             let divider = $("<div>", {"class": "card-divider card-mealname"}).text(item.restaurant.name);
             let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"});
-            let button = $("<button>", {"class": "cell auto button rounded alert getRecipe getRestau display-block", 
-                                        "id": id}).text("Check this!");
+            let rPhone = $("<p>").text(item.restaurant.phone_numbers);
+            let rAddress = $("<p>").text(item.restaurant.location.address);
+            let rTiming = $("<p>").text(item.restaurant.timings);
+            let rPrice = $("<p>").text(item.restaurant.price_range);
+            let button = $("<button>", {"class": "cell auto button rounded alert getRestau display-block", 
+                                        "id": id, "href": item.restaurant.menu_url}).text("View Menu");
+            let bookmark = $("<i>", {"id": id, 
+                                    "class": "far fa-bookmark restaurant-bookmark cell auto align-self-middle text-right",
+                                    "data-name": item.restaurant.name,
+                                    "data-phone": item.restaurant.phone_numbers,
+                                    "data-address": item.restaurant.location.address
+                                    });
             let rating = $("<p>", {"class": "far cell auto align-self-middle text-right"}).html("Rating : <b>" + item.restaurant.user_rating.aggregate_rating +"</b>");
             $("#main-content").append(container);
             container.append(card); 
-            card.append(img, divider, cardSection);
-            cardSection.append(btnContainer);
-            btnContainer.append(button, rating);
+            card.append(divider, cardSection);
+            cardSection.append(rPhone, rAddress, rTiming, rPrice, btnContainer);
+            btnContainer.append(button, bookmark);
         });
     }
 }
