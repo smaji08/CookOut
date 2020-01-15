@@ -153,9 +153,9 @@ function createRestaurantCards(response){
             let rTiming = $("<p>").text(item.restaurant.timings);
             let rPrice = $("<p>").text(item.restaurant.price_range);
             let button = $("<button>", {"class": "cell auto button rounded alert getRestau display-block", 
-                                        "id": id, "href": item.restaurant.menu_url}).text("View Menu");
+                                        "href": item.restaurant.menu_url}).text("View Menu");
             let bookmark = $("<i>", {"id": id, 
-                                    "class": "far fa-bookmark restaurant-bookmark cell auto align-self-middle text-right",
+                                    "class": "far fa-star restaurant-bookmark cell auto align-self-middle text-right",
                                     "data-name": item.restaurant.name,
                                     "data-phone": item.restaurant.phone_numbers,
                                     "data-address": item.restaurant.location.address
