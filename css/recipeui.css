@@ -1,0 +1,77 @@
+.container {
+    position: relative;
+   width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    /*margin: 0 auto 0 16%;*/
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 350px !important;
+    height: 350px !important;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border-radius: 5px;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 150px;
+    left: 75px;
+    /* transform: translate(-150%, -50%);
+    -ms-transform: translate(-150%, -50%);*/
+}
+
+.img-container:hover .image {
+    opacity: 0.3;
+}
+
+.img-container:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: rgb(8, 207, 8);
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.Name {
+    text-shadow: #99f999 0px -2px 5px;
+    color: #3b7ef9;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Ingredient {
+    display: block;
+    width: 50%;
+    background-color: #83afe2;
+    background-image: linear-gradient(rgb(162, 188, 236), rgb(170, 207, 170));
+    border-radius: 5px;
+    margin-left: 13px;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Instructions {
+    display: block;
+    width: 92%;
+    padding: 10px;
+    background-image: linear-gradient(rgb(170, 207, 170), rgb(162, 188, 236));
+    margin-top: 10px;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
