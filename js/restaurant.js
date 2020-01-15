@@ -19,11 +19,12 @@ $("#btnByCityRestau").on("click",function(event){
 
 });
 
-$("#searchByCityRestau").on("click", function(){
+$("#searchByCityRestau").focusin(function(){
     $("#searchCityByZipRestau").val("");
 });
 
-$("#searchCityByZipRestau").on("click", function(){
+$("#searchCityByZipRestau").focusin(function(){
+
     $("#searchByCityRestau").attr("placeholder","Enter City (ex: NYC or NYC,NY)");
     $("#searchByCityRestau").val("");
 });
