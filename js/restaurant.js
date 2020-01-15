@@ -6,26 +6,41 @@ const apiKeyBing = "AvYeMBHRRinl7EAEc0aP_W8fojB2lfYzFE19POYyR9ZF4evq9P3b6A16FV1X
 $("#heroineSearch").on("click", function(event){
     event.preventDefault();
     findMe();
-    
 });
+
+//hiding the region dropdown when city ad zip input boxes are empty
+function checktheInputBoxes(){
+    if ($("#searchByCityRestau").val() === "" && $("#searchCityByZipRestau").val() === ""){
+        regionDrpDwnHide();
+    }
+}setInterval(checktheInputBoxes,500);
+
+//Hiding the region dropdown elements
+function regionDrpDwnHide(){
+    $("#lblRegionRestau").hide();
+    $("#divRegion").hide();
+}
+
+//Showing the region dropdown elements
+function regionDrpDwnShow(){
+    $("#lblRegionRestau").show();
+    $("#divRegion").show();
+}
 
 //Restaurant search by city/city, state using Bing API Rest call
 $("#btnByCityRestau").on("click",function(event){
     event.preventDefault();
     searchCity = $("#searchByCityRestau").val().trim();
-    
-    let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchCity) + "&key=" + apiKeyBing;
-    callRestService(geocodeRequest, GeocodeCallback);
-
+    if (searchCity !== ""){
+        regionDrpDwnShow();
+        let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchCity) + "&key=" + apiKeyBing;
+        callRestService(geocodeRequest, GeocodeCallback);
+    }
 });
 
+//clearing the value of Zip input field when focus is in City input field
 $("#searchByCityRestau").focusin(function(){
     $("#searchCityByZipRestau").val("");
-});
-
-$("#searchCityByZipRestau").focusin(function(){
-    $("#searchByCityRestau").attr("placeholder","Enter City (ex: NYC or NYC,NY)");
-    $("#searchByCityRestau").val("");
 });
 
 //Restaurant search by Zipcode using Bing API Rest call
@@ -33,17 +48,24 @@ $("#btnByZipRestau").on("click",function(event){
     event.preventDefault();
     searchZip = $("#searchCityByZipRestau").val().trim();
     $("#searchByCityRestau").val("");
-    
-    let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchZip) + "&key=" + apiKeyBing;
-    callRestService(geocodeRequest, GeocodeCallback);
-
+    if (searchZip !== ""){
+        regionDrpDwnShow();
+        let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchZip) + "&key=" + apiKeyBing;
+        callRestService(geocodeRequest, GeocodeCallback);
+    }
 });
 
-//Details of each clicked restaurants
-$(document).on("click",".getRestau",function(){
-    restaurantId = this.id;
-    getRestaurantDetails(restaurantId);
+//clearing the value of City input field when focus is in Zip input field
+$("#searchCityByZipRestau").focusin(function(){
+    $("#searchByCityRestau").attr("placeholder","Enter City (ex: NYC or NYC,NY)");
+    $("#searchByCityRestau").val("");
 });
+
+// //Details of each clicked restaurants
+// $(document).on("click",".getRestau",function(){
+//     restaurantId = this.id;
+//     getRestaurantDetails(restaurantId);
+// });
 
 //Bing API Rest service call
 function callRestService(request, callback) {
@@ -68,7 +90,7 @@ function GeocodeCallback(response) {
 }
 
 //Restaurant search using Cuisine/Region type
-$("#regionRestauBtn").on("click", function(event){
+$("#btnRegionRestau").on("click", function(event){
     event.preventDefault();
     cuisineId = $("#regionRestau").val();
     $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
@@ -92,8 +114,6 @@ function iAmHere(lat,lon){
         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
         success: function(response) {
             outOutIn();
-            console.log(response);
-            
             cityId = response.location.city_id;
             cityName = response.location.city_name;
             localityId = response.location.entity_id;
@@ -116,7 +136,6 @@ function getCuisine(lat,lon,randTopCuisine){
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
         success: function(response) {
-            console.log(response);
             response.cuisines.forEach(item => {
                 cuisineId = item.cuisine.cuisine_id;
                 cuisineName = item.cuisine.cuisine_name;
@@ -144,7 +163,6 @@ function getPopularRestaurants(localityId,localityType,cuisineId){
         type: "GET",
         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
         success: function(response) {
-            console.log(response);
             createRestaurantCards(response);
         },
         error: function(xhr){
@@ -158,7 +176,6 @@ function createRestaurantCards(response){
     if (response.restaurants.length > 0){
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
-        console.log(response);
         response.restaurants.forEach((item) => {
             let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
             let card = $("<div>", {"class": "radius bordered card e-card"});
@@ -189,33 +206,16 @@ function createRestaurantCards(response){
 }
 
 //TO get the details of particular restaurant using API passing restaurantId
-function getRestaurantDetails(restaurantId){
-    $.ajax({
-        url: "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + restaurantId,
-        type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
-        success: function(response) {
-            // renderRestaurantDetails(response);
-        },
-        error: function(xhr){
-            alert(xhr.response + " Error: Could not retrieve the restaurant details!");
-        } 
-    });
-}
-
-//the restaurant detail response JSON data --- skeleton
-// function renderRestaurantDetails(response){
-//     console.log(response);
-//     $("#main-content").empty();
-//     $("#main-title").empty();
-//     console.log(response.id);
-//     console.log(response.name);
-//     console.log(response.location.address);
-//     console.log(response.location.locality);
-//     console.log(response.location.city);
-//     console.log(response.location.zipcode);
-//     console.log(response.timings);
-//     console.log(response.photos_url);
-//     console.log(response.menu_url);
-//     console.log(response.phone_numbers);
+// function getRestaurantDetails(restaurantId){
+//     $.ajax({
+//         url: "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + restaurantId,
+//         type: "GET",
+//         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
+//         success: function(response) {
+//             // renderRestaurantDetails(response);
+//         },
+//         error: function(xhr){
+//             alert(xhr.response + " Error: Could not retrieve the restaurant details!");
+//         } 
+//     });
 // }

@@ -6,8 +6,6 @@ function outOutIn(){
      $("#menu-title").removeClass("inIn").addClass("outOut");
      $("#call-to-action").removeClass("primay").addClass("warning");
      $("#call-to-action-rest").removeClass("warning").addClass("primary");
-
-
 }
 
 function inInOut(){
