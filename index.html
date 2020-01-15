@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CookOut</title>
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/recipeui.css">
   </head>
   <body class="height-100"><!--height 100 to push footer to bottom-->
     
@@ -28,6 +29,8 @@
         <div class="top-bar-right">
           <ul class="menu">
             <li><button id="call-to-action" type="button" class="button warning">Recipe Box <i class="fas fa-bookmark"></i></button></li>
+            <li><button id="call-to-action-rest" type="button" class="button primary">Favorite Restaurants <i class="fas fa-star"></i></button></li>
+
           </ul>
         </div>
       </div><!--Menu-->
@@ -43,7 +46,7 @@
                 <h5 id="searchTitle">Recipe Search</h5>
                 <label>List Recipe by Ingredients</label>
                 <div class="input-group">
-                  <input type="text" id="recipeByIngredients" class="input-group-field" placeholder="List All Ingredients">
+                  <input type="text" id="recipeByIngredients" class="input-group-field" placeholder="List All Ingredients separated by comma ( , )">
                   <div class="input-group-button">
                     <button id="btnRecipeByIngredients"class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
@@ -98,12 +101,12 @@
                   </div>
                 </div>
                 
-               <label>Search Restaurants by Region/Cuisine</label>
-                <div class="input-group">
+               <label id="lblRegionRestau">Search Restaurants by Region/Cuisine</label>
+                <div id="divRegion" class="input-group">
                   <select id="regionRestau" class="input-group-field">
                   </select>
                   <div class="input-group-button">
-                    <button id="regionRestauBtn" class="button secondary"><i class="fas fa-search"></i></button>
+                    <button id="btnRegionRestau" class="button secondary"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
 
@@ -157,6 +160,7 @@
     <!-- <script src="js/recipenameanddata2.js"></script>
     <script src="js/recipenameanddata.js"></script> -->
     <!-- <script src="rnmcookout.js"></script> -->
+    <script src="js/recipeDetails.js"></script>
     <script src="js/app-switcher.js"></script>
     <script src="js/local-storage.js"></script>
     <script src="js/restaurant.js"></script>

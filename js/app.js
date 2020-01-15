@@ -55,6 +55,7 @@ function createRecipeCards(response, searchTerm){
 $("#btnRecipeByMealName").on("click", function(event){
     event.preventDefault();
     let mealName = $("#recipeByMealName").val().trim();
+    
     $.ajax({
         url: "https://www.themealdb.com/api/json/v1/1/search.php?s=" + mealName,
         type: "GET",
@@ -71,6 +72,7 @@ $("#btnRecipeByMealName").on("click", function(event){
 $("#btnRecipeByIngredients").on("click", function(event){
     event.preventDefault();
     let mainIngredients = $("#recipeByIngredients").val().trim();
+    mainIngredients = mainIngredients.replace(/\s/g,'');
     $.ajax({
         url: "https://www.themealdb.com/api/json/v2/9973533/filter.php?i=" + mainIngredients,
         type: "GET",
@@ -110,7 +112,7 @@ $("#categoryBtn").on("click", function(event){
             createRecipeCards(response, category);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No es Found");
+            alert(xhr.response + " Error: No Recipes Found");
         }
     });
 });
@@ -131,7 +133,7 @@ function randomCategory(){
             createRecipeCards(response, randomCat);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No es Found");
+            alert(xhr.response + " Error: No Recipes Found");
         }
     });
 }
