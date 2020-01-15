@@ -6,8 +6,6 @@ function outOutIn(){
      $("#menu-title").removeClass("inIn").addClass("outOut");
      $("#call-to-action").removeClass("primay").addClass("warning");
      $("#call-to-action-rest").removeClass("warning").addClass("primary");
-
-
 }
 
 function inInOut(){
@@ -18,12 +16,11 @@ function inInOut(){
     $("#menu-title").removeClass("outOut").addClass("inIn");
     $("#call-to-action").removeClass("primary").addClass("warning");
     $("#call-to-action-rest").removeClass("warning").addClass("primary");
-
 }
 
 $("#outSearch").on("click", function(e){
     //click on out -> show out -> hide cook
-    outOutIn();
+     findMe();
 });
 
 $("#cookSearch").on("click", function(e){
