@@ -28,27 +28,29 @@ $.ajax({
 
 //Create Recipe Card Function
 function createRecipeCards(response, searchTerm){
-    $("#main-content").empty();
-    $("#main-title").text(searchTerm + " Recipes");
-    response.meals.forEach((item) => {
-        let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
-        let card = $("<div>", {"class": "radius bordered card e-card"});
-        let cardSection = $("<div>", {"class": "card-section"});
-        let id = item.idMeal;
-        let img = $("<img>", {"src": item.strMealThumb, "alt": item.strMeal, "class": "recipeBoxImg", "data-open": "imgModal"});
-        let divider = $("<div>", {"class": "card-divider card-mealname"}).text(item.strMeal);
-        let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
-        let button = $("<button>", {"class": "cell auto button rounded alert getRecipe display-block", "id": id}).text("View Recipe");
-        let bookmark = $("<i>", {"id": id, 
-                                "class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right",
-                                "data-imgURL": item.strMealThumb,
-                                "data-mealName": item.strMeal});
-        $("#main-content").append(container);
-        container.append(card);
-        card.append(img, divider, cardSection);
-        cardSection.append(btnContainer);
-        btnContainer.append(button, bookmark);
-    });
+    if (response.meals.length > 0){
+        $("#main-content").empty();
+        $("#main-title").text(searchTerm + " Recipes");
+        response.meals.forEach((item) => {
+            let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
+            let card = $("<div>", {"class": "radius bordered card e-card"});
+            let cardSection = $("<div>", {"class": "card-section"});
+            let id = item.idMeal;
+            let img = $("<img>", {"src": item.strMealThumb, "alt": item.strMeal, "class": "recipeBoxImg", "data-open": "imgModal"});
+            let divider = $("<div>", {"class": "card-divider card-mealname"}).text(item.strMeal);
+            let btnContainer = $("<div>", {"class": "grid-x grid-padding-x"})
+            let button = $("<button>", {"class": "cell auto button rounded alert getRecipe getRecipeId display-block", "id": id}).text("View Recipe");
+            let bookmark = $("<i>", {"id": id, 
+                                    "class": "far fa-bookmark recipe-bookmark cell auto align-self-middle text-right",
+                                    "data-imgURL": item.strMealThumb,
+                                    "data-mealName": item.strMeal});
+            $("#main-content").append(container);
+            container.append(card);
+            card.append(img, divider, cardSection);
+            cardSection.append(btnContainer);
+            btnContainer.append(button, bookmark);
+        });
+    }
 }
 
 //Recipes by Meal Name Search
