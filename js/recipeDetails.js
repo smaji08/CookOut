@@ -54,7 +54,7 @@ function printrecipe(recipeId) {
                 "style": "text-align:center"
             }).text(response.meals[0].strMeal));*/
             
-            $('#main-title').text(response.meals[0].strMeal);
+            $('#main-title').html("<strong>" + response.meals[0].strMeal + "</strong>");
             $("#main-content").append(cont);
             var cont2 = ($("<div>", {
                 "class": "img-container"

@@ -34,7 +34,7 @@ $.ajax({
 function createRecipeCards(response, searchTerm) {
     if (response.meals.length > 0) {
         $("#main-content").empty();
-        $("#main-title").text(searchTerm + " Recipes");
+        $("#main-title").html("<strong>" + searchTerm + " Recipes</strong>");
         response.meals.forEach((item) => {
             let container = $("<div>", {
                 "class": "cell medium-6 large-4 xxlarge-3"
@@ -77,6 +77,14 @@ function createRecipeCards(response, searchTerm) {
         });
     }
 }
+
+$("#recipeByIngredients").focusin(function () {
+    $("#recipeByMealName").val("");
+});
+
+$("#recipeByMealName").focusin(function () {
+    $("#recipeByIngredients").val("");
+});
 
 //Recipes by Meal Name Search
 $("#btnRecipeByMealName").on("click", function (event) {

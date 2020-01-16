@@ -12,8 +12,7 @@ function checktheInputBoxes() {
     if ($("#searchByCityRestau").val() === "" && $("#searchCityByZipRestau").val() === "") {
         regionDrpDwnHide();
     }
-}
-setInterval(checktheInputBoxes, 500);
+}setInterval(checktheInputBoxes, 500);
 
 //Hiding the region dropdown elements
 function regionDrpDwnHide() {
@@ -60,12 +59,6 @@ $("#searchCityByZipRestau").focusin(function () {
     $("#searchByCityRestau").attr("placeholder", "Enter City (ex: NYC or NYC,NY)");
     $("#searchByCityRestau").val("");
 });
-
-// //Details of each clicked restaurants
-// $(document).on("click",".getRestau",function(){
-//     restaurantId = this.id;
-//     getRestaurantDetails(restaurantId);
-// });
 
 //Bing API Rest service call
 function callRestService(request, callback) {
@@ -194,7 +187,8 @@ function createRestaurantCards(response) {
     console.log(response);
     if (response.restaurants.length > 0) {
         $("#main-content").empty();
-        $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
+        $("#main-title").html("<strong>" + $("#regionRestau option:selected").text() + 
+                                " Restaurant Options for " + cityName + "</strong>");
 
         response.restaurants.forEach((item) => {
             let container = $("<div>", {
@@ -242,7 +236,6 @@ function createRestaurantCards(response) {
             card.append(divider, cardSection);
             iframeCont.append(iframe);
             cardSection.append(iframeCont, rPhoneAdd, rTiming, rPrice, btnContainer);
-            // btnContainer.append(button, bookmark);
             btnContainer.append(rMenu, bookmark);
         });
     } else {
@@ -299,5 +292,5 @@ function createIframe(address){
         "marginheight": "0",
         "marginwidth": "0"
     });
-    return iframe; master
+    return iframe;
 }
