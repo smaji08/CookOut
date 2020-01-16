@@ -75,3 +75,16 @@ a {
     border-radius: 5px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+#footer {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #dddddd;
+    background-color: #223f5a;
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    border-top: 8px solid #e4de8f;
+    padding-top: 10px;
+    text-align: center;
+}
