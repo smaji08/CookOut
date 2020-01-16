@@ -12,6 +12,9 @@ function checktheInputBoxes() {
     if ($("#searchByCityRestau").val() === "" && $("#searchCityByZipRestau").val() === "") {
         regionDrpDwnHide();
     }
+    else{
+        regionDrpDwnShow();
+    }
 }setInterval(checktheInputBoxes, 500);
 
 //Hiding the region dropdown elements
@@ -73,7 +76,6 @@ function callRestService(request, callback) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + error.statusText + "</h5>");
             $("#errorModal").foundation("open");
-
         }
     });
 }
@@ -83,6 +85,8 @@ function GeocodeCallback(response) {
     console.log(response);
     lat = response.resourceSets[0].resources[0].point.coordinates[0];
     lon = response.resourceSets[0].resources[0].point.coordinates[1];
+    corrCityname = response.resourceSets[0].resources[0].address.locality;
+    corrCitystate = response.resourceSets[0].resources[0].address.adminDistrict;
     iAmHere(lat, lon);
 }
 
@@ -99,6 +103,10 @@ $("#btnRegionRestau").on("click", function (event) {
 function findMe() {
     $.getJSON('https://geolocation-db.com/json/')
         .done(function (location) {
+            console.log(location.city);
+            console.log(location.state);
+            corrCityname = location.city;
+            corrCitystate = location.state;
             iAmHere(location.latitude, location.longitude);
         });
 }
@@ -119,7 +127,8 @@ function iAmHere(lat, lon) {
             localityType = response.location.entity_type;
             var topCuisine = response.popularity.top_cuisines;
             randTopCuisine = topCuisine[Math.floor(Math.random() * topCuisine.length)];
-            $("#searchByCityRestau").attr("placeholder", cityName);
+            // $("#searchByCityRestau").attr("placeholder", currCity + "," + currState);
+            $("#searchByCityRestau").val(corrCityname + ",  " + corrCitystate);
             getCuisine(lat, lon, randTopCuisine);
         },
         error: function (xhr) {
@@ -188,7 +197,7 @@ function createRestaurantCards(response) {
     if (response.restaurants.length > 0) {
         $("#main-content").empty();
         $("#main-title").html("<strong>" + $("#regionRestau option:selected").text() + 
-                                " Restaurant Options for " + cityName + "</strong>");
+                                " Restaurant Options for " + corrCityname + ",  " +corrCitystate + "</strong>");
 
         response.restaurants.forEach((item) => {
             let container = $("<div>", {

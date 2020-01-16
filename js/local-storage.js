@@ -28,10 +28,17 @@ $(document).on("click", ".trash", function(e){
     recipeBox();
 });
 
+//view eye click listener
+$(document).on("click",".view", function(e){
+    e.preventDefault();
+    let recipeId = $(this).attr("data-recipe-id");
+    printrecipe(recipeId);
+
+});
+
 //Click listener to generate saved recipes
 $("#call-to-action").on("click", function(e){
     e.preventDefault();
-    // console.log("clicked")
     //click on cook -> show cook -> hide out
     inInOut();
     recipeBox();
@@ -40,10 +47,11 @@ $("#call-to-action").on("click", function(e){
 //Click listener for lightbox modal
 $(document).on("click", ".recipeBoxImg", function(e){
     e.preventDefault();
+    
     let recipeName = $(this).attr("alt");
     let recipeURL = $(this).attr("src");
-    let recipeId = this.dataset.id;
-    // console.log(recipeURL)
+    let recipeId = $(this).attr("data-recipe-id");
+    
     $("#imgModalTitle").text(recipeName);
     $("#imgModalImg").attr("src", recipeURL);
     $(".btnSeeRecipe").attr("id", recipeId);
@@ -113,7 +121,7 @@ function removeFromStorage(recipeID){
 function recipeBox(){
 
     $("#main-content").empty();
-    $("#main-title").empty().text("Saved Recipes");
+    $("#main-title").empty().html("<strong>Saved Recipes</strong>");
     let ls = localStorage.getItem("savedRecipes");
     let lsArr = JSON.parse(ls);
 
@@ -138,7 +146,7 @@ function recipeBox(){
             let td2 = $("<td>", {"data-recipe-id": recipe.id}).text(recipe.name);
             let td4 = $("<td>", {"width": "150", "class": "table-center"});
             let td3 = $("<td>", {"width": "75", "class": "table-center"});
-            let tdImg = $("<img>", {"src": recipe.imgURL, "alt": recipe.name, "class": "recipeBoxImg", "data-open": "imgModal"});
+            let tdImg = $("<img>", {"src": recipe.imgURL, "alt": recipe.name, "class": "recipeBoxImg", "data-open": "imgModal","data-recipe-id": recipe.id });
             let trash = $("<i>", {"data-recipe-id": recipe.id,"class": "far fa-trash-alt trash"});
             let view = $("<i>", {"data-recipe-id": recipe.id,"class": "far fa-eye view"});
             tbody.append(tr);
@@ -235,7 +243,7 @@ setInterval(checkForSavedRestaurants, 1000);
 function favoriteRestaurants(){
 
     $("#main-content").empty();
-    $("#main-title").empty().text("Favorite Restaurants");
+    $("#main-title").empty().html("<strong>Favorite Restaurants</strong>");
     let ls = localStorage.getItem("savedRestaurants");
     let lsArr = JSON.parse(ls);
 

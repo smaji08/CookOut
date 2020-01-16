@@ -51,7 +51,7 @@ function createRecipeCards(response, searchTerm) {
                 "alt": item.strMeal,
                 "class": "recipeBoxImg",
                 "data-open": "imgModal",
-                "data-id": id
+                "data-recipe-id": id
             });
             let divider = $("<div>", {
                 "class": "card-divider card-mealname"
