@@ -1,13 +1,19 @@
 $(document).on("click", ".getRecipeId", function () {
-    x = this.id;
-    printrecipe(x);
+    recipeId = this.id;
+    printrecipe(recipeId);
 });
 
-function printrecipe(x) {
+$(document).on("click", ".btnSeeRecipe", function() {
+    recipeId = this.id;
+    $("#imgModal").foundation("close");
+    printrecipe(recipeId);
+});
+
+function printrecipe(recipeId) {
     
     $("#main-content").empty();
 
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + x;
+    var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + recipeId;
     $.ajax({
             url: queryURL,
             method: "GET"

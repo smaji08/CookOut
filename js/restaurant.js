@@ -237,7 +237,7 @@ function createRestaurantCards(response) {
             container.append(card);
             card.append(divider, cardSection);
             cardSection.append(rPhone, rAddress, rTiming, rPrice, btnContainer);
-            // btnContainer.append(button, bookmark);
             btnContainer.append(rMenu, bookmark);
         });
-    }}
+    }
+}
