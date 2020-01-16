@@ -50,7 +50,8 @@ function createRecipeCards(response, searchTerm) {
                 "src": item.strMealThumb,
                 "alt": item.strMeal,
                 "class": "recipeBoxImg",
-                "data-open": "imgModal"
+                "data-open": "imgModal",
+                "data-id": id
             });
             let divider = $("<div>", {
                 "class": "card-divider card-mealname"
@@ -88,9 +89,6 @@ $("#btnRecipeByMealName").on("click", function (event) {
         success: function (response) {
             createRecipeCards(response, mealName);
         },
-        /*error: function(xhr){
-             alert(xhr.response + " Error: No Recipes Found");
-         }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
@@ -113,9 +111,6 @@ $("#btnRecipeByIngredients").on("click", function (event) {
         success: function (response) {
             createRecipeCards(response, mainIngredients);
         },
-        /* error: function(xhr){
-             alert(xhr.response + " Error: No Recipes Found");
-         }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
@@ -134,9 +129,6 @@ $("#regionBtn").on("click", function (event) {
         success: function (response) {
             createRecipeCards(response, region);
         },
-        /* error: function(xhr){
-             alert(xhr.response + " Error: No Recipes Found");
-         }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
@@ -155,10 +147,6 @@ $("#categoryBtn").on("click", function (event) {
         success: function (response) {
             createRecipeCards(response, category);
         },
-        /*  error: function(xhr){
-              alert(xhr.response + " Error: No Recipes Found");
-          }*/
-
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
@@ -182,9 +170,6 @@ function randomCategory() {
         success: function (response) {
             createRecipeCards(response, randomCat);
         },
-        /* error: function(xhr){
-             alert(xhr.response + " Error: No Recipes Found");
-         }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");

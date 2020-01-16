@@ -42,9 +42,12 @@ $(document).on("click", ".recipeBoxImg", function(e){
     e.preventDefault();
     let recipeName = $(this).attr("alt");
     let recipeURL = $(this).attr("src");
+    let recipeId = this.dataset.id;
     // console.log(recipeURL)
     $("#imgModalTitle").text(recipeName);
     $("#imgModalImg").attr("src", recipeURL);
+    $(".btnSeeRecipe").attr("id", recipeId);
+    
 })
 
 //initalize stored recipes and restaurants as an empty array
