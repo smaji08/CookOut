@@ -1,4 +1,3 @@
-
 const apiKey = "c97539c0429e46cfdc293e3c02b52dd2";
 const apiKeyBing = "AvYeMBHRRinl7EAEc0aP_W8fojB2lfYzFE19POYyR9ZF4evq9P3b6A16FV1XQIof";
 
@@ -61,12 +60,6 @@ $("#searchCityByZipRestau").focusin(function(){
     $("#searchByCityRestau").val("");
 });
 
-// //Details of each clicked restaurants
-// $(document).on("click",".getRestau",function(){
-//     restaurantId = this.id;
-//     getRestaurantDetails(restaurantId);
-// });
-
 //Bing API Rest service call
 function callRestService(request, callback) {
     $.ajax({
@@ -77,13 +70,17 @@ function callRestService(request, callback) {
             callback(response);
         },
         error: function (error) {
-            alert(error.statusText);
+            $("#errorModalHead").text("Info!!");
+            $("#errorModalMsg").html("<h5>"+ error.statusText + "</h5>");
+            $("#errorModal").foundation("open");
+            
         }
     });
 }
 
 //getting the latitude and longitude and passing to the Zomato API
 function GeocodeCallback(response) {
+    console.log(response);
     lat = response.resourceSets[0].resources[0].point.coordinates[0];
     lon = response.resourceSets[0].resources[0].point.coordinates[1];
     iAmHere(lat,lon);
@@ -124,7 +121,9 @@ function iAmHere(lat,lon){
             getCuisine(lat,lon,randTopCuisine);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No City Found");
+            $("#errorModalHead").text("Info!!");
+            $("#errorModalMsg").html("<h5>"+xhr.response + " Error: No City Found</h5>");
+            $("#errorModal").foundation("open");
         } 
     });
 }
@@ -148,14 +147,15 @@ function getCuisine(lat,lon,randTopCuisine){
             });
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No Cuisine Found");
+            $("#errorModalHead").text("Info!!");
+            $("#errorModalMsg").html("<h5>"+xhr.response + " Error: No Cuisine Found</h5>");
+            $("#errorModal").foundation("open");
         } 
     });
 }
 
 //according to the location and and cuisine, API call to get the restaurants which serve those cuisine
 function getPopularRestaurants(localityId,localityType,cuisineId){
-    
     $.ajax(
         {
         url: "https://developers.zomato.com/api/v2.1/search?entity_id=" + localityId + 
@@ -166,7 +166,9 @@ function getPopularRestaurants(localityId,localityType,cuisineId){
             createRestaurantCards(response);
         },
         error: function(xhr){
-            alert(xhr.response + " Error: No Restaurants Found");
+            $("#errorModalHead").text("Info!!");
+            $("#errorModalMsg").html("<h5>"+xhr.response + " Error: No Restaurants Found</h5>");
+            $("#errorModal").foundation("open");
         } 
     });
 }
@@ -176,6 +178,7 @@ function createRestaurantCards(response){
     if (response.restaurants.length > 0){
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
+              
         response.restaurants.forEach((item) => {
             let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
             let card = $("<div>", {"class": "radius bordered card e-card"});
@@ -187,8 +190,11 @@ function createRestaurantCards(response){
             let rAddress = $("<p>").text(item.restaurant.location.address);
             let rTiming = $("<p>").text(item.restaurant.timings);
             let rPrice = $("<p>").text(item.restaurant.price_range);
-            let button = $("<button>", {"class": "cell auto button rounded alert getRestau display-block", 
-                                        "href": item.restaurant.menu_url}).text("View Menu");
+            // let button = $("<button>", {"class": "cell auto button rounded alert getRestau display-block", 
+            //                             "href": item.restaurant.menu_url}).text("View Menu");
+            let rMenu = $("<a>", {"class": "cell auto button rounded alert getRestau display-block", 
+                                        "href": item.restaurant.menu_url,
+                                        "target":"_blank"}).text("View Menu");
             let bookmark = $("<i>", {"id": id, 
                                     "class": "far fa-star restaurant-bookmark cell auto align-self-middle text-right",
                                     "data-name": item.restaurant.name,
@@ -200,22 +206,8 @@ function createRestaurantCards(response){
             container.append(card); 
             card.append(divider, cardSection);
             cardSection.append(rPhone, rAddress, rTiming, rPrice, btnContainer);
-            btnContainer.append(button, bookmark);
+            // btnContainer.append(button, bookmark);
+            btnContainer.append(rMenu, bookmark);
         });
     }
 }
-
-//TO get the details of particular restaurant using API passing restaurantId
-// function getRestaurantDetails(restaurantId){
-//     $.ajax({
-//         url: "https://developers.zomato.com/api/v2.1/restaurant?res_id=" + restaurantId,
-//         type: "GET",
-//         beforeSend: function(xhr){xhr.setRequestHeader("user-key", apiKey);},
-//         success: function(response) {
-//             // renderRestaurantDetails(response);
-//         },
-//         error: function(xhr){
-//             alert(xhr.response + " Error: Could not retrieve the restaurant details!");
-//         } 
-//     });
-// }

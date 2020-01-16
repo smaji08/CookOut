@@ -1,12 +1,10 @@
-$(document).on("click", ".getRecipe", function () {
-    //console.log("am here honey");
-    console.log(this.id);
+$(document).on("click", ".getRecipeId", function () {
     x = this.id;
     printrecipe(x);
 });
 
 function printrecipe(x) {
-    console.log(x);
+    
     $("#main-content").empty();
 
     var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + x;
@@ -49,7 +47,7 @@ function printrecipe(x) {
                 "class": "Name",
                 "style": "text-align:center"
             }).text(response.meals[0].strMeal));*/
-
+            
             $('#main-title').text(response.meals[0].strMeal);
             $("#main-content").append(cont);
             var cont2 = ($("<div>", {

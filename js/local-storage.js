@@ -31,7 +31,7 @@ $(document).on("click", ".trash", function(e){
 //Click listener to generate saved recipes
 $("#call-to-action").on("click", function(e){
     e.preventDefault();
-    console.log("clicked")
+    // console.log("clicked")
     //click on cook -> show cook -> hide out
     inInOut();
     recipeBox();
@@ -42,7 +42,7 @@ $(document).on("click", ".recipeBoxImg", function(e){
     e.preventDefault();
     let recipeName = $(this).attr("alt");
     let recipeURL = $(this).attr("src");
-    console.log(recipeURL)
+    // console.log(recipeURL)
     $("#imgModalTitle").text(recipeName);
     $("#imgModalImg").attr("src", recipeURL);
 })
@@ -99,7 +99,7 @@ function removeFromStorage(recipeID){
     if (index !== -1){
         lsArr.splice(index, 1);
         storedRecipes.splice(index, 1);
-        console.log(lsArr);
+        // console.log(lsArr);
         let stringForStorage = JSON.stringify(lsArr);
         localStorage.removeItem("savedRecipes");
         localStorage.setItem("savedRecipes", stringForStorage);
@@ -206,7 +206,7 @@ function removeRestaurantFromStorage(restaurantID){
     if (index !== -1){
         lsArr.splice(index, 1);
         storedRestaurants.splice(index, 1);
-        console.log(lsArr);
+        // console.log(lsArr);
         let stringForStorage = JSON.stringify(lsArr);
         localStorage.removeItem("savedRestaurants");
         localStorage.setItem("savedRestaurants", stringForStorage);
@@ -219,8 +219,8 @@ function checkForSavedRestaurants(){
     let lsArr = JSON.parse(ls);
     if (lsArr !== null){
         lsArr.forEach((item) => { 
-            console.log("#"+item.id);
-            console.log($("#"+item.id)); 
+            // console.log("#"+item.id);
+            // console.log($("#"+item.id)); 
             $("#"+item.id).addClass("fas").removeClass("far");
         })
     }
@@ -275,7 +275,7 @@ function favoriteRestaurants(){
 //Click listener to generate starred restaurants
 $("#call-to-action-rest").on("click", function(e){
     e.preventDefault();
-    console.log("clicked")
+    // console.log("clicked")
     //click on out -> show out -> hide cook
     outOutIn();
     favoriteRestaurants();
