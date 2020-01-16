@@ -1,175 +1,200 @@
 <!doctype html>
 
-<html class="no-js height-100" lang="en"><!--height 100 to push footer to bottom-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookOut</title>
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/recipeui.css">
-  </head>
-  <body class="height-100"><!--height 100 to push footer to bottom-->
-    
-    <div class="grid-y medium-grid-frame height-100"><!--Site child elements move in the y-direciton pins to the height of the viewport-->
-      
-      <div id="topBarMenu" class="title-bar inIn" data-responsive-toggle="main-nav" data-hide-for="medium">
-        <button class="menu-icon" type="button" data-toggle="main-nav"></button>
-        <div class="title-bar-title title-bar-custom"><i class="fas fa-utensils"></i>Menu</div>
-      </div><!--Title Bar-->
-      
-      <div class="top-bar inIn" id="main-nav">
-        <div class="top-bar-left">
-          <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
-            <li id="menu-title" class="menu-text inIn"><i class="fas fa-utensils"></i>CookOut</li>
-            <li id="cookSearch" class="align-self-middle"><a href="#">Recipes</a></li>
-            <li id="outSearch" class="align-self-middle"><a href="#">Local Restaurants</a></li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="menu">
-            <li><button id="call-to-action" type="button" class="button warning">Recipe Box <i class="fas fa-bookmark"></i></button></li>
-            <li><button id="call-to-action-rest" type="button" class="button primary">Favorite Restaurants <i class="fas fa-star"></i></button></li>
+<html class="no-js height-100" lang="en">
+<!--height 100 to push footer to bottom-->
 
-          </ul>
-        </div>
-      </div><!--Menu-->
-      
-      <div class="cell medium-auto medium-cell-block-container">
-        <div class="grid-x grid-padding-x height-100"><!--Child elements move in the x-direction-->
-          
-          <aside class="cell medium-4 large-3 search-area">
-              
-              <!--Cooking Search-->
-              <div id="cookSearchPane">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CookOut</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/recipeui.css">
+</head>
 
-                <h5 id="searchTitle">Recipe Search</h5>
-                <label>List Recipe by Ingredients</label>
-                <div class="input-group">
-                  <input type="text" id="recipeByIngredients" class="input-group-field" placeholder="List All Ingredients separated by comma ( , )">
-                  <div class="input-group-button">
-                    <button id="btnRecipeByIngredients"class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
+<body class="height-100">
+  <!--height 100 to push footer to bottom-->
 
-                <label>List Recipe by Meal Name</label>
-                <div class="input-group">
-                  <input type="text" id="recipeByMealName" class="input-group-field" placeholder="Search By Meal Name">
-                  <div class="input-group-button">
-                    <button id="btnRecipeByMealName" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-                
-                <label>List Recipe by Region</label>
-                <div class="input-group">
-                  <select id="region" class="input-group-field">
-                  </select>
-                  <div class="input-group-button">
-                    <button id="regionBtn" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
+  <div class="grid-y medium-grid-frame height-100">
+    <!--Site child elements move in the y-direciton pins to the height of the viewport-->
 
-                <label>List Recipes by Category</label>
-                <div class="input-group">
-                  <select id="categories" class="input-group-field">
-                  </select>
-                  <div class="input-group-button">
-                    <button id="categoryBtn" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
+    <div id="topBarMenu" class="title-bar inIn" data-responsive-toggle="main-nav" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle="main-nav"></button>
+      <div class="title-bar-title title-bar-custom"><i class="fas fa-utensils"></i>Menu</div>
+    </div>
+    <!--Title Bar-->
+
+    <div class="top-bar inIn" id="main-nav">
+      <div class="top-bar-left">
+        <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
+          <li id="menu-title" class="menu-text inIn"><i class="fas fa-utensils"></i>CookOut</li>
+          <li id="cookSearch" class="align-self-middle"><a href="#">Recipes</a></li>
+          <li id="outSearch" class="align-self-middle"><a href="#">Local Restaurants</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><button id="call-to-action" type="button" class="button warning">Recipe Box <i
+                class="fas fa-bookmark"></i></button></li>
+          <li><button id="call-to-action-rest" type="button" class="button primary">Favorite Restaurants <i
+                class="fas fa-star"></i></button></li>
+
+        </ul>
+      </div>
+    </div>
+    <!--Menu-->
+
+    <div class="cell medium-auto medium-cell-block-container">
+      <div class="grid-x grid-padding-x height-100">
+        <!--Child elements move in the x-direction-->
+
+        <aside class="cell medium-4 large-3 search-area">
+
+          <!--Cooking Search-->
+          <div id="cookSearchPane">
+
+            <h5 id="searchTitle">Recipe Search</h5>
+            <label>List Recipe by Ingredients</label>
+            <div class="input-group">
+              <input type="text" id="recipeByIngredients" class="input-group-field"
+                placeholder="List All Ingredients separated by comma ( , )">
+              <div class="input-group-button">
+                <button id="btnRecipeByIngredients" class="button secondary"><i class="fas fa-search"></i></button>
               </div>
+            </div>
 
-                           
-              <!--Restaurant Search-->
-              <div id="outSearchPane" style="display: none;">
-                
-                <h5 id="searchTitle">Restaurant Search</h5>
-
-                <label>Search Restaurants by City/City,State</label>
-                <div class="input-group">
-                  <input type="text" id="searchByCityRestau" class="input-group-field" placeholder="Enter City (ex: NYC or NYC,NY)">
-                  <div class="input-group-button">
-                    <button id="btnByCityRestau" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-                
-                <label>Search Restaurants by ZIP Code</label>
-                <div class="input-group">
-                  <input type="text" id="searchCityByZipRestau" class="input-group-field" placeholder="Search Zip">
-                  <div class="input-group-button">
-                    <button id="btnByZipRestau" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-                
-               <label id="lblRegionRestau">Search Restaurants by Region/Cuisine</label>
-                <div id="divRegion" class="input-group">
-                  <select id="regionRestau" class="input-group-field">
-                  </select>
-                  <div class="input-group-button">
-                    <button id="btnRegionRestau" class="button secondary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-
+            <label>List Recipe by Meal Name</label>
+            <div class="input-group">
+              <input type="text" id="recipeByMealName" class="input-group-field" placeholder="Search By Meal Name">
+              <div class="input-group-button">
+                <button id="btnRecipeByMealName" class="button secondary"><i class="fas fa-search"></i></button>
               </div>
+            </div>
 
-          </aside><!--End Aside-->
-
-          <main class="cell medium-cell-block-y medium-8 large-9 main-body"><!--content scrolls in the y-direction-->
-            <div id="main-title" ></div>
-            <div class="grid-x grid-padding-x " id="main-content">
-              <div class="hero-section">
-                <div class="hero-section-text">
-                    <h1 class="home-hero-text"><strong>Cook</strong> at Home or Dine <strong>Out</strong></h1>
-                    <h5 class="home-hero-text">Food Brings Friends and Family Together</h5>
-                  <div class="grid-x">
-                  <button class="cell auto button rounded primay getRecipe display-block" id="heroSearch">Search Recipe</button> 
-                  <button class="cell auto button rounded warning getRecipe display-block" id="heroineSearch">Search Restaurants</button>
-                  </div>
-                </div>
+            <label>List Recipe by Region</label>
+            <div class="input-group">
+              <select id="region" class="input-group-field">
+              </select>
+              <div class="input-group-button">
+                <button id="regionBtn" class="button secondary"><i class="fas fa-search"></i></button>
               </div>
-            </div><!--Main Content moves in the x-direction-->
-          </main><!--End Main-->
-        
-        </div><!--End Main X-Container-->
-      </div><!--End Main Content Container-->
+            </div>
 
-      <footer id="footer" class="cell">
-        <div class="grix-x grid-padding-x footer">
-          <div class="cell">
-            <h6>Here is my footer</h6>
+            <label>List Recipes by Category</label>
+            <div class="input-group">
+              <select id="categories" class="input-group-field">
+              </select>
+              <div class="input-group-button">
+                <button id="categoryBtn" class="button secondary"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
           </div>
+
+
+          <!--Restaurant Search-->
+          <div id="outSearchPane" style="display: none;">
+
+            <h5 id="searchTitle">Restaurant Search</h5>
+
+            <label>Search Restaurants by City/City,State</label>
+            <div class="input-group">
+              <input type="text" id="searchByCityRestau" class="input-group-field"
+                placeholder="Enter City (ex: NYC or NYC,NY)">
+              <div class="input-group-button">
+                <button id="btnByCityRestau" class="button secondary"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+
+            <label>Search Restaurants by ZIP Code</label>
+            <div class="input-group">
+              <input type="text" id="searchCityByZipRestau" class="input-group-field" placeholder="Search Zip">
+              <div class="input-group-button">
+                <button id="btnByZipRestau" class="button secondary"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+
+            <label id="lblRegionRestau">Search Restaurants by Region/Cuisine</label>
+            <div id="divRegion" class="input-group">
+              <select id="regionRestau" class="input-group-field">
+              </select>
+              <div class="input-group-button">
+                <button id="btnRegionRestau" class="button secondary"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+
+          </div>
+
+        </aside>
+        <!--End Aside-->
+
+        <main class="cell medium-cell-block-y medium-8 large-9 main-body">
+          <!--content scrolls in the y-direction-->
+          <div id="main-title"></div>
+          <div class="grid-x grid-padding-x " id="main-content">
+            <div class="hero-section">
+              <div class="hero-section-text">
+                <h1 class="home-hero-text"><strong>Cook</strong> at Home or Dine <strong>Out</strong></h1>
+                <h5 class="home-hero-text">Food Brings Friends and Family Together</h5>
+                <div class="grid-x">
+                  <button class="cell auto button rounded primay getRecipe display-block" id="heroSearch">Search
+                    Recipe</button>
+                  <button class="cell auto button rounded warning getRecipe display-block" id="heroineSearch">Search
+                    Restaurants</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Main Content moves in the x-direction-->
+        </main>
+        <!--End Main-->
+
+      </div>
+      <!--End Main X-Container-->
+    </div>
+    <!--End Main Content Container-->
+
+    <footer id="footer" class="cell">
+      <div class="grix-x grid-padding-x footer">
+        <div class="cell">
+          <h6>Here is my footer</h6>
         </div>
-      </footer><!--End Footer-->
+      </div>
+    </footer>
+    <!--End Footer-->
 
-      <div class="reveal" id="imgModal" data-reveal>
-        <h3 id="imgModalTitle"></h3>
-        <button class="button secondary">See Recipe</button>
-        <img id="imgModalImg">
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div><!--End Image Modal-->
+    <div class="reveal" id="imgModal" data-reveal>
+      <h3 id="imgModalTitle"></h3>
+      <button class="button secondary">See Recipe</button>
+      <img id="imgModalImg">
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--End Image Modal-->
 
-      <div class="reveal tiny" id="errorModal" data-reveal>
-        <h3 id="errorModalHead"></h3>
-        <p id="errorModalMsg"></p>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div><!--End Error Alert Modal-->
-    </div><!--End Y-Container-->
+    <div class="reveal tiny" id="errorModal" data-reveal>
+      <h3 id="errorModalHead"></h3>
+      <p id="errorModalMsg"></p>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--End Error Alert Modal-->
+  </div>
+  <!--End Y-Container-->
 
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/what-input/dist/what-input.js"></script>
-    <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
-    <script src="https://kit.fontawesome.com/490a5cd13f.js" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
-    <!-- <script src="js/recipenameanddata2.js"></script>
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/what-input/dist/what-input.js"></script>
+  <script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
+  <script src="https://kit.fontawesome.com/490a5cd13f.js" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  <!-- <script src="js/recipenameanddata2.js"></script>
     <script src="js/recipenameanddata.js"></script> -->
-    <!-- <script src="rnmcookout.js"></script> -->
-    <script src="js/recipeDetails.js"></script>
-    <script src="js/app-switcher.js"></script>
-    <script src="js/local-storage.js"></script>
-    <script src="js/restaurant.js"></script>
-  </body>
+  <!-- <script src="rnmcookout.js"></script> -->
+  <script src="js/recipeDetails.js"></script>
+  <script src="js/app-switcher.js"></script>
+  <script src="js/local-storage.js"></script>
+  <script src="js/restaurant.js"></script>
+</body>
+
 </html>
