@@ -1,3 +1,8 @@
+$yellow: #fdce4b;
+$blue: #193c62;
+$green: #41B3A3;
+$orange: #f07c41;
+
 .container {
     position: relative;
     /*width: 80%;*/
@@ -75,4 +80,13 @@ a {
     margin-top: 10px;
     border-radius: 5px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.footer {
+    color: #dddddd;
+    background-color: $blue;
+    height: 30px;
+    border-top: 4px solid $yellow;
+    text-align: center;
+    box-sizing: border-box;
 }
