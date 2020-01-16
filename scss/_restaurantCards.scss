@@ -1,0 +1,62 @@
+$yellow: #fdce4b;
+$blue: #193c62;
+$green: #41B3A3;
+$orange: #f07c41;
+
+.restName {
+    font-size: 120%;
+    margin-right: 1rem;
+    color:white;
+    font-weight: 800;
+}
+
+.rest-name-background{
+    background-color: $blue!important;
+}
+
+.ratingStar {
+    color: $yellow;
+    align-self: center;
+}
+
+.phone {
+    color: $orange;
+    padding-right: 0.5rem;
+}
+
+.address {
+    color: $orange;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.price {
+    color: $green;
+}
+
+.restaurant-bookmark {
+    color: $green;
+}
+
+.getRestau {
+    margin-left: 1rem!important;
+}
+
+.trash-rest{
+    color: $orange;
+}
+
+.directions {
+    color: $green;
+}
+
+.trash-rest, .directions{
+    cursor: pointer;
+}
+
+iframe {
+    background-image: url("/img/ajax-loader.gif");   
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ededee;
+   }
