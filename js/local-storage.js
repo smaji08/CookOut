@@ -124,7 +124,7 @@ function recipeBox(){
         let th1 = $("<th>", {"class": "table-center"}).text("Thumbnail");
         let th2 = $("<th>").text("Recipe Name");
         let th3 = $("<th>", {"class": "table-center"}).text("Remove");
-        let th4 = $("<th>", {"class": "table-view"}).text("View Recipe");
+        let th4 = $("<th>", {"class": "table-view table-center"}).text("View Recipe");
         let tbody = $("<tbody>");
         
         $("#main-content").append(table);
@@ -136,7 +136,7 @@ function recipeBox(){
             let tr = $("<tr>");
             let td1 = $("<td>", {"width": "150", "align": "center" });
             let td2 = $("<td>", {"data-recipe-id": recipe.id}).text(recipe.name);
-            let td4 = $("<td>", {"width": "100", "class": "table-center"});
+            let td4 = $("<td>", {"width": "150", "class": "table-center"});
             let td3 = $("<td>", {"width": "75", "class": "table-center"});
             let tdImg = $("<img>", {"src": recipe.imgURL, "alt": recipe.name, "class": "recipeBoxImg", "data-open": "imgModal"});
             let trash = $("<i>", {"data-recipe-id": recipe.id,"class": "far fa-trash-alt trash"});
@@ -246,8 +246,8 @@ function favoriteRestaurants(){
         let th1 = $("<th>", {}).text("Restaurant");
         let th2 = $("<th>").text("Phone");
         let th3 = $("<th>").text("Address");
-        let th4 = $("<th>", {"class": "table-directions"}).text("Directions");
-        let th5 = $("<th>", {}).text("Remove");
+        let th4 = $("<th>", {"class": "table-directions table-center"}).text("Directions");
+        let th5 = $("<th>", {"class": "table-center"}).text("Remove");
         let tbody = $("<tbody>");
         
         $("#main-content").append(table);
@@ -260,12 +260,14 @@ function favoriteRestaurants(){
             let td1 = $("<td>", {"data-restaurant-id": restaurant.id}).text(restaurant.name);
             let td2 = $("<td>",{"data-restaurant-phone": restaurant.phone}).text(restaurant.phone);
             let td3 = $("<td>", {"data-restaurant-address": restaurant.address}).text(restaurant.address);
-            let td4 = $("<td>", {});
-            let td5 = $("<td>", {});
+            let td4 = $("<td>", {"class": "table-center"});
+            let td5 = $("<td>", {"class": "table-center"});
+            let directionLink = $("<a>", {"href": "https://www.google.com/maps/place/" + restaurant.address, "target": "_new"});
             let directions = $("<i>", {"data-address": restaurant.address,"class": "fas fa-route directions"});
             let trash = $("<i>", {"data-restaurant-id": restaurant.id,"class": "far fa-trash-alt trash-rest"});
             tbody.append(tr);
-            td4.append(directions)
+            directionLink.append(directions);
+            td4.append(directionLink);
             td5.append(trash);
             tr.append(td1,td2,td3,td4,td5);
         });
