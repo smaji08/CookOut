@@ -240,12 +240,6 @@ function createRestaurantCards(response) {
             $("#main-content").append(container);
             container.append(card);
             card.append(divider, cardSection);
- Aug1601
-            cardSection.append(rPhone, rAddress, rTiming, rPrice, btnContainer);
-            btnContainer.append(rMenu, bookmark);
-        });
-    }
-
             iframeCont.append(iframe);
             cardSection.append(iframeCont, rPhoneAdd, rTiming, rPrice, btnContainer);
             // btnContainer.append(button, bookmark);
