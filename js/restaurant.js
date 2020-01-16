@@ -60,6 +60,12 @@ $("#searchCityByZipRestau").focusin(function(){
     $("#searchByCityRestau").val("");
 });
 
+// //Details of each clicked restaurants
+// $(document).on("click",".getRestau",function(){
+//     restaurantId = this.id;
+//     getRestaurantDetails(restaurantId);
+// });
+
 //Bing API Rest service call
 function callRestService(request, callback) {
     $.ajax({
@@ -178,7 +184,7 @@ function createRestaurantCards(response){
     if (response.restaurants.length > 0){
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
-              
+      
         response.restaurants.forEach((item) => {
             let container = $("<div>", {"class": "cell medium-6 large-4 xxlarge-3"});
             let card = $("<div>", {"class": "radius bordered card e-card"});
@@ -210,4 +216,3 @@ function createRestaurantCards(response){
             btnContainer.append(rMenu, bookmark);
         });
     }
-}

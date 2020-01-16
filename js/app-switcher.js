@@ -20,11 +20,17 @@ function inInOut(){
 
 $("#outSearch").on("click", function(e){
     //click on out -> show out -> hide cook
+    outOutIn();
      findMe();
+
 });
 
 $("#cookSearch").on("click", function(e){
     //click on cook -> show cook -> hide out
     inInOut();
+    $("#main-content").empty();
+    randomCategory();
 
 });
+
+
