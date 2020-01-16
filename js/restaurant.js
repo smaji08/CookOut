@@ -191,13 +191,14 @@ function getPopularRestaurants(localityId, localityType, cuisineId) {
 
 //Restaurant cards rendered
 function createRestaurantCards(response) {
+    console.log(response);
     if (response.restaurants.length > 0) {
         $("#main-content").empty();
         $("#main-title").text($("#regionRestau option:selected").text() + " Restaurant Options");
 
         response.restaurants.forEach((item) => {
             let container = $("<div>", {
-                "class": "cell medium-6 large-4 xxlarge-3"
+                "class": "cell small-12"
             });
             let card = $("<div>", {
                 "class": "radius bordered card e-card"
@@ -206,38 +207,97 @@ function createRestaurantCards(response) {
                 "class": "card-section"
             });
             let id = item.restaurant.R.res_id;
+            let ratingNumber = item.restaurant.user_rating.aggregate_rating;
+            let stars = starIcons(ratingNumber);
             let divider = $("<div>", {
-                "class": "card-divider card-mealname"
-            }).text(item.restaurant.name);
+                "class": "card-divider rest-name-background"
+            }).html('<span class="restName">' + item.restaurant.name + "</span>" + stars);
             let btnContainer = $("<div>", {
-                "class": "grid-x grid-padding-x"
+                "class": "grid-x grid-padding-x align-justify"
             });
-            let rPhone = $("<p>").text(item.restaurant.phone_numbers);
-            let rAddress = $("<p>").text(item.restaurant.location.address);
-            let rTiming = $("<p>").text(item.restaurant.timings);
-            let rPrice = $("<p>").text(item.restaurant.price_range);
-            // let button = $("<button>", {"class": "cell auto button rounded alert getRestau display-block", 
-            //                             "href": item.restaurant.menu_url}).text("View Menu");
+            let rPhoneAdd = $("<p>").html(
+                '<i class="fas fa-phone phone"></i>' + " " + item.restaurant.phone_numbers +
+                '<i class="fas fa-map-marked-alt address"></i>' + item.restaurant.location.address );
+            let rTiming = $("<p>").text("Hours: " + item.restaurant.timings);
+            let dollarSigns = item.restaurant.price_range;
+            let dollarSign = dollarIcons(dollarSigns);
+            let rPrice = $("<p>").addClass("price").text("Price: " + dollarSign);
             let rMenu = $("<a>", {
-                "class": "cell auto button rounded alert getRestau display-block",
+                "class": "cell small-3 button rounded alert getRestau display-block",
                 "href": item.restaurant.menu_url,
                 "target": "_blank"
             }).text("View Menu");
+            let iframeCont = $("<div>", {"class": "iframeContainer"});
+            let iframe = createIframe(item.restaurant.location.address);
+            console.log(iframe);
             let bookmark = $("<i>", {
                 "id": id,
-                "class": "far fa-star restaurant-bookmark cell auto align-self-middle text-right",
+                "class": "cell small-3 far fa-star restaurant-bookmark align-self-middle text-right",
                 "data-name": item.restaurant.name,
                 "data-phone": item.restaurant.phone_numbers,
                 "data-address": item.restaurant.location.address
             });
-            let rating = $("<p>", {
-                "class": "far cell auto align-self-middle text-right"
-            }).html("Rating : <b>" + item.restaurant.user_rating.aggregate_rating + "</b>");
             $("#main-content").append(container);
             container.append(card);
             card.append(divider, cardSection);
-            cardSection.append(rPhone, rAddress, rTiming, rPrice, btnContainer);
+            iframeCont.append(iframe);
+            cardSection.append(iframeCont, rPhoneAdd, rTiming, rPrice, btnContainer);
             // btnContainer.append(button, bookmark);
             btnContainer.append(rMenu, bookmark);
         });
-    }}
+    } else {
+        $("#main-content").empty();
+        $("#main-content").text("No Restaurants Found");
+    }
+}
+
+//Print star rating
+function starIcons (rating){
+    if (rating < 2){
+        let stars = '<i class="fas fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i>';
+        return stars;
+    } else if (rating < 3){
+        let stars = '<i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i>';
+        return stars;
+    } else if (rating < 4){
+        let stars = '<i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="far fa-star ratingStar"></i><i class="far fa-star ratingStar"></i>';
+        return stars;
+    } else if (rating < 5){
+        let stars = '<i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="far fa-star ratingStar"></i>';
+        return stars;
+    } else {
+        let stars = '<i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i><i class="fas fa-star ratingStar"></i>';
+        return stars;
+    }
+}
+
+//Print dollar signs
+function dollarIcons (dollars){
+    if (dollars === 4){
+        let dollarSign = "$$$$";
+        return dollarSign;
+    } else if (dollars === 3) {
+        let dollarSign = "$$$";
+        return dollarSign;
+    } else if (dollars === 2) {
+        let dollarSign = "$$";
+        return dollarSign;
+    } else if (dollars === 1) {
+        let dollarSign = "$";
+        return dollarSign;
+    }
+}
+
+function createIframe(address){
+    console.log("in createIframe: " + address)
+    let iframe = $("<iframe>", {
+        "width": "100%",
+        "height": "100%",
+        "src": "https://maps.google.com/maps?width=100%&hl=en&q=" + address + "&ie=UTF8&t=&z=15&iwloc=B&output=embed",
+        "frameborder": "0",
+        "scrolling": "no",
+        "marginheight": "0",
+        "marginwidth": "0"
+    });
+    return iframe;
+}

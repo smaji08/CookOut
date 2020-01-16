@@ -5,7 +5,7 @@
 @import 'motion-ui';
 
 //Custom SCSS FILES
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:600|Vollkorn:600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,800|Vollkorn:600&display=swap');
 // @import url("globals");
 @import "navigation";
 @import "search";
@@ -13,6 +13,7 @@
 @import "globals";
 @import "recipebox";
 @import "recipeui";
+@import "restaurantCards";
 
 // Global styles
 @include foundation-global-styles;
