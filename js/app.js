@@ -93,7 +93,7 @@ $("#btnRecipeByMealName").on("click", function (event) {
          }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
+            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
 
@@ -118,7 +118,7 @@ $("#btnRecipeByIngredients").on("click", function (event) {
          }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
+            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
     });
@@ -139,7 +139,7 @@ $("#regionBtn").on("click", function (event) {
          }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
+            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
     });
@@ -161,7 +161,7 @@ $("#categoryBtn").on("click", function (event) {
 
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
+            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
     });
@@ -187,7 +187,7 @@ function randomCategory() {
          }*/
         error: function (xhr) {
             $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
+            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
     });
