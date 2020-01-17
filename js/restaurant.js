@@ -271,7 +271,7 @@ function createRestaurantCards(response) {
     } else {
         $("#main-content").empty();
         let errorTitle = "Error";
-        let errorMessage = "No Cuisine Found";
+        let errorMessage = "No Restaurants Found";
         errorCallout(errorTitle, errorMessage);
     }
 }
