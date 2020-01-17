@@ -53,7 +53,8 @@ function printrecipe(recipeId) {
                 "style": "width:100%"
             }));
             var mid = $("<div>", {"class": "middle"});
-            mid.append($("<div>", {"class": "text" }).html('<a target="_blank" href="' + response.meals[0].strYoutube + '">' + 'Checkout the video</a>'));
+            var embed = response.meals[0].strYoutube.replace("watch\?v=","embed\/");
+            mid.append($("<div>", {"class": "text" }).html('<a id="vModal" data-recipe-name="' + response.meals[0].strMeal + '" data-open="videoModal" data-embed="' + embed + '">Checkout the video</a>'));
             link.append(mid);
 
             let ingredients = $("<div>", {"class": "Ingredient cell large-3"}).html(data);
@@ -72,9 +73,13 @@ function printrecipe(recipeId) {
 
             $("#main-content").append(ingredients);
             $("#main-content").append(instru);
-
-
-            
-            //$(".test").html(data);
         });
 }
+
+$(document).on("click", "#vModal", function(e){
+    console.log("clicked");
+    let embed = $(this).attr("data-embed");
+    let recipeName = $(this).attr("data-recipe-name");
+    $("#videoModalHead").text(recipeName);
+    $("#videoIframe").attr("src", embed);
+});
