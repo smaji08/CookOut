@@ -73,9 +73,10 @@ function callRestService(request, callback) {
             callback(response);
         },
         error: function (error) {
-            $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + error.statusText + "</h5>");
-            $("#errorModal").foundation("open");
+            $("#main-content").empty();
+            let errorTitle = "Error";
+            let errorMessage = "No City Found";
+            errorCallout(errorTitle, errorMessage);
         }
     });
 }
@@ -83,11 +84,19 @@ function callRestService(request, callback) {
 //getting the latitude and longitude and passing to the Zomato API
 function GeocodeCallback(response) {
     console.log(response);
-    lat = response.resourceSets[0].resources[0].point.coordinates[0];
-    lon = response.resourceSets[0].resources[0].point.coordinates[1];
-    corrCityname = response.resourceSets[0].resources[0].address.locality;
-    corrCitystate = response.resourceSets[0].resources[0].address.adminDistrict;
-    iAmHere(lat, lon);
+    if (response.resourceSets[0].resources.length > 0){
+        lat = response.resourceSets[0].resources[0].point.coordinates[0];
+        lon = response.resourceSets[0].resources[0].point.coordinates[1];
+        corrCityname = response.resourceSets[0].resources[0].address.locality;
+        corrCitystate = response.resourceSets[0].resources[0].address.adminDistrict;
+        iAmHere(lat, lon);
+    }
+    else{
+        $("#main-content").empty();
+        let errorTitle = "Error";
+        let errorMessage = "No City Found";
+        errorCallout(errorTitle, errorMessage);
+    }
 }
 
 //Restaurant search using Cuisine/Region type
@@ -103,8 +112,6 @@ $("#btnRegionRestau").on("click", function (event) {
 function findMe() {
     $.getJSON('https://geolocation-db.com/json/')
         .done(function (location) {
-            console.log(location.city);
-            console.log(location.state);
             corrCityname = location.city;
             corrCitystate = location.state;
             iAmHere(location.latitude, location.longitude);
@@ -132,9 +139,10 @@ function iAmHere(lat, lon) {
             getCuisine(lat, lon, randTopCuisine);
         },
         error: function (xhr) {
-            $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No City Found</h5>");
-            $("#errorModal").foundation("open");
+            $("#main-content").empty();
+            let errorTitle = "Error";
+            let errorMessage = "No City Found";
+            errorCallout(errorTitle, errorMessage);
         }
     });
 }
@@ -164,9 +172,10 @@ function getCuisine(lat, lon, randTopCuisine) {
             });
         },
         error: function (xhr) {
-            $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Cuisine Found</h5>");
-            $("#errorModal").foundation("open");
+            $("#main-content").empty();
+            let errorTitle = "Error";
+            let errorMessage = "No Cuisine Found";
+            errorCallout(errorTitle, errorMessage);
         }
     });
 }
@@ -184,9 +193,10 @@ function getPopularRestaurants(localityId, localityType, cuisineId) {
             createRestaurantCards(response);
         },
         error: function (xhr) {
-            $("#errorModalHead").text("Info!!");
-            $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Restaurants Found</h5>");
-            $("#errorModal").foundation("open");
+            $("#main-content").empty();
+            let errorTitle = "Error";
+            let errorMessage = "No Restaurants Found";
+            errorCallout(errorTitle, errorMessage);
         }
     });
 }
