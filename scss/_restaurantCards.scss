@@ -40,6 +40,7 @@ $orange: #f07c41;
 
 .getRestau {
     margin-left: 1rem!important;
+    color: white!important;
 }
 
 .trash-rest{
@@ -54,7 +55,7 @@ $orange: #f07c41;
     cursor: pointer;
 }
 
-iframe {
+.iframeContainer iframe {
     background-image: url("/img/ajax-loader.gif");   
     background-repeat: no-repeat;
     background-position: center;

@@ -32,6 +32,13 @@ $.ajax({
 
 //Create Recipe Card Function
 function createRecipeCards(response, searchTerm) {
+    if (response.meals === null){
+        $("#main-content").empty();
+        let errorTitle = "Error";
+        let errorMessage = "No Recipes Found";
+        errorCallout(errorTitle, errorMessage);
+        return;
+    }
     if (response.meals.length > 0) {
         $("#main-content").empty();
         $("#main-title").html("<strong>" + searchTerm + " Recipes</strong>");
@@ -75,6 +82,11 @@ function createRecipeCards(response, searchTerm) {
             cardSection.append(btnContainer);
             btnContainer.append(button, bookmark);
         });
+    } else {
+        $("#main-content").empty();
+        let errorTitle = "Error";
+        let errorMessage = "No Recipes Found";
+        errorCallout(errorTitle, errorMessage);
     }
 }
 
@@ -102,8 +114,6 @@ $("#btnRecipeByMealName").on("click", function (event) {
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
-
-
     });
 
 });
