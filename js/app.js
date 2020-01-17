@@ -32,6 +32,13 @@ $.ajax({
 
 //Create Recipe Card Function
 function createRecipeCards(response, searchTerm) {
+    if (response.meals === null){
+        $("#main-content").empty();
+        let errorTitle = "Error";
+        let errorMessage = "No Recipes Found";
+        errorCallout(errorTitle, errorMessage);
+        return;
+    }
     if (response.meals.length > 0) {
         $("#main-content").empty();
         $("#main-title").html("<strong>" + searchTerm + " Recipes</strong>");
@@ -51,7 +58,7 @@ function createRecipeCards(response, searchTerm) {
                 "alt": item.strMeal,
                 "class": "recipeBoxImg",
                 "data-open": "imgModal",
-                "data-id": id
+                "data-recipe-id": id
             });
             let divider = $("<div>", {
                 "class": "card-divider card-mealname"
@@ -75,6 +82,11 @@ function createRecipeCards(response, searchTerm) {
             cardSection.append(btnContainer);
             btnContainer.append(button, bookmark);
         });
+    } else {
+        $("#main-content").empty();
+        let errorTitle = "Error";
+        let errorMessage = "No Recipes Found";
+        errorCallout(errorTitle, errorMessage);
     }
 }
 
@@ -102,8 +114,6 @@ $("#btnRecipeByMealName").on("click", function (event) {
             $("#errorModalMsg").html("<h5>" + xhr.response + " Error: No Recipe Found</h5>");
             $("#errorModal").foundation("open");
         }
-
-
     });
 
 });
@@ -184,4 +194,13 @@ function randomCategory() {
             $("#errorModal").foundation("open");
         }
     });
+}
+
+//Error Callout
+function errorCallout(errorTitle, errorMessage) {
+    let div = $("<div>", {"class": "callout warning margin-left-1 margin-top-1 margin-right-1 width-100"})
+    let h5 = $("<h5>").text(errorTitle);
+    let p = $("<p>").text(errorMessage);
+    div.append(h5,p);
+    $("#main-content").append(div);
 }
