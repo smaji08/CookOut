@@ -185,3 +185,12 @@ function randomCategory() {
         }
     });
 }
+
+//Error Callout
+function errorCallout(errorTitle, errorMessage) {
+    let div = $("<div>", {"class": "callout warning margin-left-1 margin-top-1 margin-right-1 width-100"})
+    let h5 = $("<h5>").text(errorTitle);
+    let p = $("<p>").text(errorMessage);
+    div.append(h5,p);
+    $("#main-content").append(div);
+}
