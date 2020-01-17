@@ -22,7 +22,6 @@ $("#outSearch").on("click", function(e){
     //click on out -> show out -> hide cook
     outOutIn();
      findMe();
-
 });
 
 $("#cookSearch").on("click", function(e){
