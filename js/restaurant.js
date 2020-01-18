@@ -36,7 +36,7 @@ $("#btnByCityRestau").on("click", function (event) {
     zipcode = true;
     if (searchCity !== "") {
         regionDrpDwnShow();
-        let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchCity) + "&key=" + apiKeyBing;
+        let geocodeRequest = "https://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchCity) + "&key=" + apiKeyBing;
         callRestService(geocodeRequest, GeocodeCallback);
     }
 });
@@ -53,7 +53,7 @@ $("#btnByZipRestau").on("click", function (event) {
     $("#searchByCityRestau").val("");
     if (searchZip !== "") {
         regionDrpDwnShow();
-        let geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchZip) + "&key=" + apiKeyBing;
+        let geocodeRequest = "https://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(searchZip) + "&key=" + apiKeyBing;
         callRestService(geocodeRequest, GeocodeCallback);
     }
 });
