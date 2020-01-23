@@ -38,8 +38,14 @@ Then we would want to work on refing our search and filter of local restaurants 
 ## Screenshots and Links to the deployed application and the GitHub repository
 
 Deployed App: https://smaji08.github.io/CookOut/
+
 GitHub Repo : https://github.com/smaji08/CookOut
 
+![MainPage](https://user-images.githubusercontent.com/54964461/72996986-9ffb7880-3dc9-11ea-9eca-1a20de094856.png)
+
+![RecipePage](https://user-images.githubusercontent.com/54964461/72996998-a4c02c80-3dc9-11ea-8c1c-4d62fdd9d5a9.png)
+
+![RestaurantPage](https://user-images.githubusercontent.com/54964461/72997011-aa1d7700-3dc9-11ea-9323-d98af546aef0.png)
 
 ## Installation
 
