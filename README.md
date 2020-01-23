@@ -1,5 +1,8 @@
 # CookOut
 
+Deployed App: https://smaji08.github.io/CookOut/
+
+GitHub Repo : https://github.com/smaji08/CookOut
 
 ## Elevator Pitch
 
@@ -34,12 +37,6 @@ We were successfull in creating a clean design, operational code, and demonstrat
 
 In future releases, we would want to address the issue of no back button.
 Then we would want to work on refing our search and filter of local restaurants so that users could filter by price, rating, radius, and options such as delivery, online reservations, and take-out.
-
-## Screenshots and Links to the deployed application and the GitHub repository
-
-Deployed App: https://smaji08.github.io/CookOut/
-GitHub Repo : https://github.com/smaji08/CookOut
-
 
 ## Installation
 
